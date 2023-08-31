@@ -1,0 +1,78 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  padding: 5rem 0 0 25rem ;
+}
+
+/* SEARCHBAR */
+.searchbar {
+  position: absolute;
+  top: 0;
+  padding: .5rem 0 .5rem 9.5rem;
+  width: 100%;
+  height: 6.5rem;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  border-bottom: 1px solid #d4d4d4;
+  text-decoration: none;
+  color: #000;
+}
+
+.searchbar-navigate {
+  text-decoration: none;
+  color: #000;
+}
+
+.searchbar-search {
+  height: 2rem;
+  width: 25rem;
+  padding-inline: 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #d4d4d4;
+}
+
+.outlet {
+  display: flex;
+  justify-content: center;
+  padding: 7.5rem 5rem 0rem 5rem;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 15rem;
+  height: 25rem;
+  border: 1px solid #d4d4d4;
+  padding: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  border: 1px solid #000;
+}
+
+.home-products {
+  display: grid;
+  grid-template-columns: 15rem 15rem 15rem 15rem;
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+
+.product-image {
+  align-self: center;
+  width: 10rem;
+  height: 12rem;
+}
