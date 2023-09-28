@@ -8,6 +8,8 @@ function App() {
 
   const [items, setItems] = useState(data)
 
+  const parent = document.getElementById("parent");
+
   return (
     <>
         <Searchbar />
