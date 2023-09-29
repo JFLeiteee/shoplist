@@ -5,7 +5,7 @@ export default [
         price: "5.219,10",
         feedback: 4.8,
         photo: "../public/img/iphone_14.png",
-        categoria: ["tecnologia", "smartphone"]
+        categoria: ["tecnologia", "smartphone"],
     },
     {
         id: 2,
@@ -13,7 +13,7 @@ export default [
         price: "2.339,10",
         feedback: 4.9,
         photo: "../public/img/notebook.png",
-        categoria: ["tecnologia"]
+        categoria: ["tecnologia"],
     },
     {
         id: 3,
@@ -21,7 +21,7 @@ export default [
         price: "120,80",
         feedback: 5,
         photo: "../public/img/escada.png",
-        categoria: ["para casa"]
+        categoria: ["para casa"],
     },
     {
         id: 4,
@@ -29,7 +29,7 @@ export default [
         price: "389,99",
         feedback: 4.5,
         photo: "../public/img/panela.png",
-        categoria: ["cozinha"]
+        categoria: ["cozinha"],
     },
     {
         id: 5,
@@ -37,7 +37,7 @@ export default [
         price: "679,05",
         feedback: 5,
         photo: "../public/img/air fry.jpg",
-        categoria: ["cozinha", "eletrônico"]
+        categoria: ["cozinha", "eletrônico"],
     },
     {
         id: 6,
@@ -45,7 +45,7 @@ export default [
         price: "4.184,91",
         feedback: 5,
         photo: "../public/img/ps5.png",
-        categoria: ["videogame", "tecnologia"]
+        categoria: ["videogame", "tecnologia"],
     },
     {
         id: 7,
@@ -53,7 +53,7 @@ export default [
         price: "129,90",
         feedback: 4.2,
         photo: "../public/img/fone.jpg",
-        categoria: ["videogame", "tecnologia"]
+        categoria: ["videogame", "tecnologia"],
     },
     {
         id: 8,
@@ -61,7 +61,7 @@ export default [
         price: "11.399,05",
         feedback: 5,
         photo: "../public/img/tv.png",
-        categoria: ["tecnologia", "televisão"]
+        categoria: ["tecnologia", "televisão"],
     },
     {
         id: 9,
@@ -69,7 +69,7 @@ export default [
         price: "303,70",
         feedback: 4.8,
         photo: "../public/img/cadeira.png",
-        categoria: ["móvel"]
+        categoria: ["móvel"],
     },
     {
         id: 10,
@@ -77,7 +77,7 @@ export default [
         price: "1.499,90",
         feedback: 4.8,
         photo: "../public/img/s20.png",
-        categoria: ["smartphone", "tecnologia"]
+        categoria: ["smartphone", "tecnologia"],
     },
     {
         id: 11,
@@ -85,7 +85,7 @@ export default [
         price: "404,01",
         feedback: 3.2,
         photo: "../public/img/camera.jpg",
-        categoria: ["tecnologia"]
+        categoria: ["tecnologia"],
     },
     {
         id: 12,
@@ -93,7 +93,7 @@ export default [
         price: "127,16",
         feedback: 4.6,
         photo: "../public/img/taca.png",
-        categoria: ["cozinha"]
+        categoria: ["cozinha"],
     },
 
 ]

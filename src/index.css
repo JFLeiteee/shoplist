@@ -74,17 +74,28 @@ body {
   position: relative;
 }
 
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 15rem;
+  height: 25rem;
+  padding: 1rem;
+}
+
 .product-card:hover {
   border: 1px solid #000;
 }
 
 .product-name, .product-feedback {
   color: #000;
+  margin: 0;
 }
 
 .product-price {
   font-family: "Poppins Bold";
   color: #1068cc;
+  margin: 3rem 0 0 0;
 }
 
 .product-feedback {
@@ -111,8 +122,8 @@ body {
 
 .product-image {
   align-self: center;
-  width: 10rem;
-  height: 12rem;
+  width: 9rem;
+  max-height: 10rem;
 }
 
 .filter {

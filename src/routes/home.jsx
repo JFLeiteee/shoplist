@@ -9,7 +9,7 @@ export default function home() {
     const [isFilterApplied, setIsFilterApplied] = useState(false)
     const [filters, setFilters] = useState([])
 
-    const item = useOutletContext();
+    const [item, favoriteProducts, setFavoriteProducts] = useOutletContext();
 
     const navigate = useNavigate();
 
@@ -22,11 +22,11 @@ export default function home() {
     }
 
     const addToFavorites = (id) => {
-        event.stopPropagation;
-        console.log("product: " + id + " added to the favorites")
+        const updatedFavorites = [...favoriteProducts];
+        updatedFavorites[id - 1] = !updatedFavorites[id - 1];
+        setFavoriteProducts(updatedFavorites)
     }
     
-
     return(
         <> 
             <div className="home-products">
@@ -34,19 +34,24 @@ export default function home() {
                     isFilterApplied 
                     ? (console.log('right'))
 
-                    : item.map(x => 
-                        <div onClick={() => navigate(`product/${x.id}`)} key={x.id} className="product-card" >
+                    : item.map(x => {
+                        return ( 
+                        <div className="product-card" key={x.id}>
                             <div className="favorite-button" onClick={() => addToFavorites(x.id)}>
-                                <img src={heartOutline} className="heart-icon"/>
+                                <img key={x.id} src={favoriteProducts[x.id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
                             </div>
-                            <img src={x.photo} alt="imagem do produto" className="product-image"/> 
-                            <h4 className="product-name">{x.name}</h4>
-                            <div className="review">
-                                { createStars(x.feedback) }
-                                <p className="product-feedback">{x.feedback}</p> 
+
+                            <div onClick={() => navigate(`product/${x.id}`)} key={x.id} className="product">
+                                <img src={x.photo} alt="imagem do produto" className="product-image"/> 
+                                <h4 className="product-name">{x.name}</h4>
+                                <div className="review">
+                                    { createStars(x.feedback) }
+                                    <p className="product-feedback">{x.feedback}</p> 
+                                </div>
+                                <h3 className="product-price">R$ {x.price}</h3>
                             </div>
-                            <h3 className="product-price">R$ {x.price}</h3>
                         </div>
+                    )}
                     )
                 }
             </div>

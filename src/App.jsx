@@ -8,14 +8,18 @@ function App() {
 
   const [items, setItems] = useState(data)
 
-  const parent = document.getElementById("parent");
+  let favorites = []
+  for(let i = 0; i <= items.length - 1; i++) {
+    favorites.push(false);
+  }
+  const [favoriteProducts, setFavoriteProducts] = useState(favorites) 
 
   return (
     <>
         <Searchbar />
         <div className="outlet">
           <Outlet 
-            context={items}  
+            context={[items, favoriteProducts, setFavoriteProducts]}
           />
         </div>
     </>
