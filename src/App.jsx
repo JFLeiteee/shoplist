@@ -9,9 +9,6 @@ function App() {
   const [items, setItems] = useState(data)
 
   let favorites = []
-  for(let i = 0; i <= items.length - 1; i++) {
-    favorites.push(false);
-  }
   const [favoriteProducts, setFavoriteProducts] = useState(favorites) 
 
   return (

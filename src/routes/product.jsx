@@ -5,7 +5,7 @@ import starOutline from "../assets/star-outline.png"
 export default function product() {
     const { id } = useParams();
 
-    const item = useOutletContext();
+    const [item] = useOutletContext();
 
     function createStars(feedback) {
         let starArray = []

@@ -22,9 +22,15 @@ export default function home() {
     }
 
     const addToFavorites = (id) => {
-        const updatedFavorites = [...favoriteProducts];
-        updatedFavorites[id - 1] = !updatedFavorites[id - 1];
-        setFavoriteProducts(updatedFavorites)
+        if(favoriteProducts[id - 1] == undefined) {
+            const updatedFavorites = [...favoriteProducts];
+            updatedFavorites[id - 1] = id;
+            setFavoriteProducts(updatedFavorites)
+        } else {
+            const updatedFavorites = [...favoriteProducts];
+            updatedFavorites[id - 1] = undefined;
+            setFavoriteProducts(updatedFavorites)
+        }
     }
     
     return(

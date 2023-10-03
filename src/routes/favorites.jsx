@@ -1,19 +1,59 @@
-import { Link, useOutletContext, useNavigate } from "react-router-dom"
+import { Link, useOutletContext, useNavigate, redirect } from "react-router-dom"
+import starFilled from "../assets/star-filled.png"
+import starOutline from "../assets/star-outline.png"
+import heartOutline from "../assets/heart-outline.png"
+import heartFilled from "../assets/heart-filled.png"
 
 export default function favorites() {
     const [item, favoriteProducts, setFavoriteProducts] = useOutletContext()
+
     let favoriteList = []
+
+    const navigate = useNavigate();
+
+    function createStars(feedback) {
+        let starArray = []
+        for(let i = 0; i <= 4; i++){
+            starArray.push(<img key={i} src={feedback >= i + 1 ? starFilled : starOutline} alt="" className="stars-feedback"/>)
+        }
+        return starArray;
+    }
+
+    const addToFavorites = (id) => {
+        if(favoriteProducts[id - 1] == undefined) {
+            const updatedFavorites = [...favoriteProducts];
+            updatedFavorites[id - 1] = id;
+            setFavoriteProducts(updatedFavorites)
+        } else {
+            const updatedFavorites = [...favoriteProducts];
+            updatedFavorites[id - 1] = undefined;
+            setFavoriteProducts(updatedFavorites)
+        }
+    }
+
     function listFavorites() {
-        favoriteProducts.map(favorite => {
-            if(favorite == true){
-                for(let i = 0; i <= item.length; i++){
-                    if(favoriteProducts.indexOf(favorite) == item[i].id - 1){
-                        favoriteList.push(item[i].id)
-                        return favoriteList
-                    }
-                }
+        for(let i = 0; i < item.length; i++){
+            if(favoriteProducts.includes(item[i].id)){
+                favoriteList.push(
+                    <div className="product-card" key={item[i].id}>
+                        <div className="favorite-button" onClick={() => addToFavorites(item[i].id)}>
+                            <img key={item[i].id} src={favoriteProducts[item[i].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
+                        </div>
+
+                        <div onClick={() => navigate(`/product/${item[i].id}`)} key={item[i].id} className="product">
+                            <img src={item[i].photo} alt="imagem do produto" className="product-image"/> 
+                            <h4 className="product-name">{item[i].name}</h4>
+                            <div className="review">
+                                { createStars(item[i].feedback) }
+                                <p className="product-feedback">{item[i].feedback}</p> 
+                            </div>
+                            <h3 className="product-price">R$ {item[i].price}</h3>
+                        </div>
+                    </div>
+                )
             }
-        })
+        }
+        return favoriteList
     } 
 
     listFavorites()
@@ -21,17 +61,9 @@ export default function favorites() {
     return(
         <div className="favorite-page">
             <h1>my favorites</h1>
-            {
-                favoriteList.map(x => {
-                    return( 
-                        <div>
-                            <img src={item[x - 1].photo} className="product-image"/>
-                            <h1>{item[x - 1].name}</h1>
-                            <p>{item[x - 1].price}</p>
-                        </div>
-                    )
-                })
-            }
+            <div className="home-products">
+                { favoriteList }
+            </div>
         </div>
     )
 }
