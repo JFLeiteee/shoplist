@@ -120,6 +120,19 @@ body {
   gap: 1rem;
 }
 
+.superior, .inferior {
+  display: flex;
+}
+
+.superior {
+  gap: 5rem;
+}
+
+.inferior {
+  place-items: center;
+  gap: 1rem
+}
+
 .product-image {
   align-self: center;
   width: 9rem;
@@ -161,8 +174,12 @@ body {
   height: 1rem;
 }
 
-.product-page {
+#favorite-button-product {
+  width: 2rem;
+  min-height: 2rem;
+  border-radius: 50%;
+  border: 1px #868686 solid;
   display: flex;
-  gap: 5rem;
-  /* justify-content: center; */
+  justify-content: center;
+  place-items: center;
 }

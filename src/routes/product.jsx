@@ -1,11 +1,13 @@
 import { useParams, useOutletContext } from "react-router-dom"
 import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
+import heartOutline from "../assets/heart-outline.png"
+import heartFilled from "../assets/heart-filled.png"
 
 export default function product() {
     const { id } = useParams();
 
-    const [item] = useOutletContext();
+    const [item, favoriteProducts, setFavoriteProducts] = useOutletContext();
 
     function createStars(feedback) {
         let starArray = []
@@ -15,18 +17,38 @@ export default function product() {
         return starArray;
     }
 
+    const addToFavorites = (id) => {
+        if(favoriteProducts[id - 1] == undefined) {
+            const updatedFavorites = [...favoriteProducts];
+            updatedFavorites[id - 1] = id;
+            setFavoriteProducts(updatedFavorites)
+        } else {
+            const updatedFavorites = [...favoriteProducts];
+            updatedFavorites[id - 1] = undefined;
+            setFavoriteProducts(updatedFavorites)
+        }
+    }
+
     return(
         <div className="product-page">
-            <img src={item[id - 1].photo} alt="product image" className="product-image"/>
-            <div className="product-related">
-                <div className="review">
-                    {createStars(item[id - 1].feedback)}
-                    <h3 className="product-feedback">{item[id - 1].feedback}</h3>   
+            <div className="superior">
+                <img src={item[id - 1].photo} alt="product image" className="product-image"/>
+                <div className="product-related">
+                    <div className="review">
+                        {createStars(item[id - 1].feedback)}
+                        <h3 className="product-feedback">{item[id - 1].feedback}</h3>   
+                    </div>
+                    <h1>{item[id - 1].name}</h1>
+                    <h2>R$ {item[id - 1].price}</h2>
+                    <button>Buy</button>
+                    <button>Add to cart</button>
                 </div>
-                <h1>{item[id - 1].name}</h1>
-                <h2>R$ {item[id - 1].price}</h2>
-                <button>Buy</button>
-                <button>Add to cart</button>
+            </div>
+            <div className="inferior">
+                <p>Favoritar</p>
+                <div id="favorite-button-product" onClick={() => addToFavorites(item[id - 1].id)}>
+                    <img key={item[id - 1].id} src={favoriteProducts[item[id - 1].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
+                </div>
             </div>
         </div>
     )
