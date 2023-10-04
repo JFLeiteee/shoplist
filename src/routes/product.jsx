@@ -39,13 +39,13 @@ export default function product() {
                         <h3 className="product-feedback">{item[id - 1].feedback}</h3>   
                     </div>
                     <h1>{item[id - 1].name}</h1>
-                    <h2>R$ {item[id - 1].price}</h2>
-                    <button>Buy</button>
-                    <button>Add to cart</button>
+                    <h2><span className="product-price">R$ {item[id - 1].price}</span></h2>
+                    <button className="buy-button"><b>Buy</b></button>
+                    <button className="cart-button"><b>Add to cart</b></button>
                 </div>
             </div>
             <div className="inferior">
-                <p>Favoritar</p>
+                <p>Favorite</p>
                 <div id="favorite-button-product" onClick={() => addToFavorites(item[id - 1].id)}>
                     <img key={item[id - 1].id} src={favoriteProducts[item[id - 1].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
                 </div>

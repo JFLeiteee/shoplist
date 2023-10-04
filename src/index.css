@@ -60,6 +60,10 @@ body {
   flex-direction: column;
 }
 
+.sb-home {
+  color: #1068cc;
+}
+
 .product-card {
   display: flex;
   flex-direction: column;
@@ -175,6 +179,7 @@ body {
 }
 
 #favorite-button-product {
+  cursor: pointer;
   width: 2rem;
   min-height: 2rem;
   border-radius: 50%;
@@ -182,4 +187,31 @@ body {
   display: flex;
   justify-content: center;
   place-items: center;
+}
+
+.buy-button {
+  margin-right: 3rem;
+  width: 10rem;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+  background-color: #1068cc;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cart-button {
+  cursor: pointer;
+  border: 1px solid #1068cc;
+  outline: none;
+  background-color: #fff;
+  color: #1068cc;
+  height: 2.5rem;
+  width: 8rem;
+  border-radius: 5px;
+}
+
+.buy-button:hover, .cart-button:hover {
+  opacity: 0.8;
 }
