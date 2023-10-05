@@ -2,7 +2,8 @@ export default [
     {
         id: 1,
         name: "Iphone 14 Plus",
-        price: "5.219,10",
+        // price: 5219.10,
+        price: 5219.10,
         feedback: 4.8,
         photo: "/img/iphone_14.png",
         categoria: ["tecnologia", "smartphone"],
@@ -10,7 +11,8 @@ export default [
     {
         id: 2,
         name: "Notebook Samsung Intel Core i3-1115g4 4GB",
-        price: "2.339,10",
+        // price: 2339.10,
+        price: 2339.10,
         feedback: 4.9,
         photo: "/img/notebook.png",
         categoria: ["tecnologia"],

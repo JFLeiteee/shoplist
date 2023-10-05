@@ -3,6 +3,7 @@ import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
+import colorCart from "../assets/color-cart.png"
 
 export default function product() {
     const { id } = useParams();
@@ -41,7 +42,12 @@ export default function product() {
                     <h1>{item[id - 1].name}</h1>
                     <h2><span className="product-price">R$ {item[id - 1].price}</span></h2>
                     <button className="buy-button"><b>Buy</b></button>
-                    <button className="cart-button"><b>Add to cart</b></button>
+                    <button className="product-cart-button">
+                        <div style={{display: "flex", justifyContent: "center", placeItems:"center", gap:".5rem"}}>
+                            <img src={colorCart} className="cart-icon"/>
+                            <b>Add to cart</b>
+                        </div>
+                    </button>
                 </div>
             </div>
             <div className="inferior">

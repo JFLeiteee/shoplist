@@ -3,6 +3,8 @@ import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
+import cartIcon from "../assets/cart-icon.png"
+
 
 export default function favorites() {
     const [item, favoriteProducts, setFavoriteProducts] = useOutletContext()
@@ -36,8 +38,14 @@ export default function favorites() {
             if(favoriteProducts.includes(item[i].id)){
                 favoriteList.push(
                     <div className="product-card" key={item[i].id}>
-                        <div className="favorite-button" onClick={() => addToFavorites(item[i].id)}>
-                            <img key={item[i].id} src={favoriteProducts[item[i].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
+                        <div className="top-buttons">
+                        <div className="cart-button">
+                                    <img key={item[i].id} src={cartIcon} className="cart-icon"/>
+                                </div>
+
+                            <div className="favorite-button" onClick={() => addToFavorites(item[i].id)}>
+                                <img key={item[i].id} src={favoriteProducts[item[i].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
+                            </div>
                         </div>
 
                         <div onClick={() => navigate(`/product/${item[i].id}`)} key={item[i].id} className="product">

@@ -8,15 +8,16 @@ function App() {
 
   const [items, setItems] = useState(data)
 
-  let favorites = []
-  const [favoriteProducts, setFavoriteProducts] = useState(favorites) 
+
+  const [favoriteProducts, setFavoriteProducts] = useState([]) 
+  const [cartProducts, setCartProducts] = useState([]) 
 
   return (
     <>
         <Searchbar />
         <div className="outlet">
           <Outlet 
-            context={[items, favoriteProducts, setFavoriteProducts]}
+            context={[items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts]}
           />
         </div>
     </>

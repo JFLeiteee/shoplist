@@ -4,12 +4,13 @@ import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
+import cartIcon from "../assets/cart-icon.png"
 
 export default function home() {
     const [isFilterApplied, setIsFilterApplied] = useState(false)
     const [filters, setFilters] = useState([])
 
-    const [item, favoriteProducts, setFavoriteProducts] = useOutletContext();
+    const [item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts] = useOutletContext();
 
     const navigate = useNavigate();
 
@@ -32,6 +33,19 @@ export default function home() {
             setFavoriteProducts(updatedFavorites)
         }
     }
+
+    const addToCart = (id) => {
+        console.log("opa")
+        if(cartProducts[id - 1] == undefined) {
+            const updatedCart = [...cartProducts];
+            updatedCart[id - 1] = id;
+            setCartProducts(updatedCart)
+        } else {
+            const updatedCart = [...cartProducts];
+            updatedCart[id - 1] = undefined;
+            setCartProducts(updatedCart)
+        }
+    }
     
     return(
         <> 
@@ -43,8 +57,13 @@ export default function home() {
                     : item.map(x => {
                         return ( 
                         <div className="product-card" key={x.id}>
-                            <div className="favorite-button" onClick={() => addToFavorites(x.id)}>
-                                <img key={x.id} src={favoriteProducts[x.id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
+                            <div className="top-buttons">
+                                <div className="cart-button" onClick={() => addToCart(x.id)}>
+                                    <img key={x.id} src={cartIcon} className="cart-icon"/>
+                                </div>
+                                <div className="favorite-button" onClick={() => addToFavorites(x.id)}>
+                                    <img key={x.id} src={favoriteProducts[x.id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
+                                </div>
                             </div>
 
                             <div onClick={() => navigate(`product/${x.id}`)} key={x.id} className="product">
