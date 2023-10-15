@@ -10,6 +10,7 @@ export default function cart() {
 
     let cartList = []
     let totalPrice = 0;
+    let priceConverted = ""
 
     const navigate = useNavigate();
 
@@ -27,9 +28,9 @@ export default function cart() {
                 cartList.push(
                     <div className="product-cart" key={item[i].id}>
                         <div className="top-buttons">
-                        <div className="cart-button">
-                                    <img key={item[i].id} src={cartIcon} className="cart-icon"/>
-                                </div>
+                            <div className="cart-button">
+                                <img key={item[i].id} src={cartIcon} className="cart-icon"/>
+                            </div>
 
                             <div className="favorite-button" onClick={() => addToFavorites(item[i].id)}>
                                 <img key={item[i].id} src={favoriteProducts[item[i].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
@@ -56,13 +57,15 @@ export default function cart() {
 
     function sumItems() {
         for(let i = 0; i < item.length; i++) {
-            if(cartProducts.includes(item[i].id)){
-                totalPrice = totalPrice + 1;
-                // let priceConverted = parseFloat(item[i].price)
-                // totalPrice = totalPrice + priceConverted
+            if(cartProducts.includes(item[i].id)){  
+                let itemPrice = item[i].price
+                totalPrice = Number.parseFloat(totalPrice) + Number.parseFloat(itemPrice)
+                totalPrice = totalPrice.toFixed(2)
             }
         }
-        return totalPrice
+        priceConverted = totalPrice.toString()
+        priceConverted = priceConverted.replace(".", ",")
+        return priceConverted
     }
 
     sumItems()
@@ -74,7 +77,7 @@ export default function cart() {
             </div>
 
             <div className="cart-info">
-                <p>Total items: { totalPrice }</p>
+                <p>Total price: R${ priceConverted }</p>
             </div>
         </div>
     )

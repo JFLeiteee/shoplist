@@ -2,7 +2,6 @@ export default [
     {
         id: 1,
         name: "Iphone 14 Plus",
-        // price: 5219.10,
         price: 5219.10,
         feedback: 4.8,
         photo: "/img/iphone_14.png",
@@ -11,7 +10,6 @@ export default [
     {
         id: 2,
         name: "Notebook Samsung Intel Core i3-1115g4 4GB",
-        // price: 2339.10,
         price: 2339.10,
         feedback: 4.9,
         photo: "/img/notebook.png",
@@ -20,7 +18,7 @@ export default [
     {
         id: 3,
         name: "Escada Alumínio Doméstica 5 Degraus",
-        price: "120,80",
+        price: 120.80,
         feedback: 5,
         photo: "/img/escada.png",
         categoria: ["para casa"],
@@ -28,7 +26,7 @@ export default [
     {
         id: 4,
         name: "Jogo de Panela Tramontina",
-        price: "389,99",
+        price: 389.99,
         feedback: 4.5,
         photo: "/img/panela.png",
         categoria: ["cozinha"],
@@ -36,7 +34,7 @@ export default [
     {
         id: 5,
         name: "Fritadeira Air Fry Philco",
-        price: "679,05",
+        price: 679.05,
         feedback: 5,
         photo: "/img/air fry.jpg",
         categoria: ["cozinha", "eletrônico"],
@@ -44,7 +42,7 @@ export default [
     {
         id: 6,
         name: "Console Playstation 5 825GB SSD",
-        price: "4.184,91",
+        price: 4184.91,
         feedback: 5,
         photo: "/img/ps5.png",
         categoria: ["videogame", "tecnologia"],
@@ -52,7 +50,7 @@ export default [
     {
         id: 7,
         name: "Headset Gamer HyperX",
-        price: "129,90",
+        price: 129.90,
         feedback: 4.2,
         photo: "/img/fone.jpg",
         categoria: ["videogame", "tecnologia"],
@@ -60,7 +58,7 @@ export default [
     {
         id: 8,
         name: "Smart TV 75' QLED 4K Samsung",
-        price: "11.399,05",
+        price: 11399.05,
         feedback: 5,
         photo: "/img/tv.png",
         categoria: ["tecnologia", "televisão"],
@@ -68,7 +66,7 @@ export default [
     {
         id: 9,
         name: "Cadeira de Escritório Presidente Giratória Preta",
-        price: "303,70",
+        price: 303.70,
         feedback: 4.8,
         photo: "/img/cadeira.png",
         categoria: ["móvel"],
@@ -76,7 +74,7 @@ export default [
     {
         id: 10,
         name: "Samsung Galaxy S20 FE 256GB",
-        price: "1.499,90",
+        price: 1499.90,
         feedback: 4.8,
         photo: "/img/s20.png",
         categoria: ["smartphone", "tecnologia"],
@@ -84,7 +82,7 @@ export default [
     {
         id: 11,
         name: "Câmera Inteligente Interna Wi-Fi Full HD",
-        price: "404,01",
+        price: 404.01,
         feedback: 3.2,
         photo: "/img/camera.jpg",
         categoria: ["tecnologia"],
@@ -92,7 +90,7 @@ export default [
     {
         id: 12,
         name: "Jogo de Taça de Cristal Para Vinho",
-        price: "127,16",
+        price: 127.16,
         feedback: 4.6,
         photo: "/img/taca.png",
         categoria: ["cozinha"],

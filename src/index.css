@@ -226,6 +226,7 @@ body {
 }
 
 .product-cart {
+  position: relative;
   display: flex;
   width: 40rem;
   height: 8rem;
@@ -244,4 +245,5 @@ body {
   place-items: center;
   gap: 1.5rem;
   padding: .5rem;
+  cursor: pointer;
 }

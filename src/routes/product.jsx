@@ -10,6 +10,9 @@ export default function product() {
 
     const [item, favoriteProducts, setFavoriteProducts] = useOutletContext();
 
+    let priceConverted = item[id - 1].price.toString()
+    priceConverted = priceConverted.replace(".", ",")
+
     function createStars(feedback) {
         let starArray = []
         for(let i = 0; i <= 4; i++){
@@ -40,7 +43,7 @@ export default function product() {
                         <h3 className="product-feedback">{item[id - 1].feedback}</h3>   
                     </div>
                     <h1>{item[id - 1].name}</h1>
-                    <h2><span className="product-price">R$ {item[id - 1].price}</span></h2>
+                    <h2><span className="product-price">R$ {priceConverted}</span></h2>
                     <button className="buy-button"><b>Buy</b></button>
                     <button className="product-cart-button">
                         <div style={{display: "flex", justifyContent: "center", placeItems:"center", gap:".5rem"}}>

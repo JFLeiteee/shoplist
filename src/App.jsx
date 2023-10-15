@@ -8,16 +8,21 @@ function App() {
 
   const [items, setItems] = useState(data)
 
-
   const [favoriteProducts, setFavoriteProducts] = useState([]) 
-  const [cartProducts, setCartProducts] = useState([]) 
+  const [cartProducts, setCartProducts] = useState([])
+  const [searchResults, setSearchResults] = useState([]) 
+
+  function handleSearch(search) {
+    const searchFilter = items.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
+    setSearchResults(searchFilter)
+  }
 
   return (
     <>
-        <Searchbar />
+        <Searchbar onSearch={handleSearch}/>
         <div className="outlet">
           <Outlet 
-            context={[items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts]}
+            context={[items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults]}
           />
         </div>
     </>

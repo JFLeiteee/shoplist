@@ -36,6 +36,10 @@ export default function favorites() {
     function listFavorites() {
         for(let i = 0; i < item.length; i++){
             if(favoriteProducts.includes(item[i].id)){
+
+                let priceConverted = item[i].price.toString();
+                priceConverted = priceConverted.replace(".", ",")
+
                 favoriteList.push(
                     <div className="product-card" key={item[i].id}>
                         <div className="top-buttons">
@@ -55,7 +59,7 @@ export default function favorites() {
                                 { createStars(item[i].feedback) }
                                 <p className="product-feedback">{item[i].feedback}</p> 
                             </div>
-                            <h3 className="product-price">R$ {item[i].price}</h3>
+                            <h3 className="product-price">R$ {priceConverted}</h3>
                         </div>
                     </div>
                 )

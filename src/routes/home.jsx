@@ -10,9 +10,11 @@ export default function home() {
     const [isFilterApplied, setIsFilterApplied] = useState(false)
     const [filters, setFilters] = useState([])
 
-    const [item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts] = useOutletContext();
+    const [item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults] = useOutletContext();
 
     const navigate = useNavigate();
+
+    let priceConverted = ""
 
     function createStars(feedback) {
         let starArray = []
@@ -51,10 +53,12 @@ export default function home() {
         <> 
             <div className="home-products">
                 { 
-                    isFilterApplied 
-                    ? (console.log('right'))
+                    searchResults != ""
+                    ? searchResults.map(x => {
 
-                    : item.map(x => {
+                        priceConverted = x.price.toString();
+                        priceConverted = priceConverted.replace(".", ",")
+
                         return ( 
                         <div className="product-card" key={x.id}>
                             <div className="top-buttons">
@@ -73,11 +77,38 @@ export default function home() {
                                     { createStars(x.feedback) }
                                     <p className="product-feedback">{x.feedback}</p> 
                                 </div>
-                                <h3 className="product-price">R$ {x.price}</h3>
+                                <h3 className="product-price">R$ {priceConverted}</h3>
                             </div>
                         </div>
-                    )}
-                    )
+                    )})
+
+                    : item.map(x => {
+
+                        priceConverted = x.price.toString();
+                        priceConverted = priceConverted.replace(".", ",")
+
+                        return ( 
+                        <div className="product-card" key={x.id}>
+                            <div className="top-buttons">
+                                <div className="cart-button" onClick={() => addToCart(x.id)}>
+                                    <img key={x.id} src={cartIcon} className="cart-icon"/>
+                                </div>
+                                <div className="favorite-button" onClick={() => addToFavorites(x.id)}>
+                                    <img key={x.id} src={favoriteProducts[x.id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
+                                </div>
+                            </div>
+
+                            <div onClick={() => navigate(`product/${x.id}`)} key={x.id} className="product">
+                                <img src={x.photo} alt="imagem do produto" className="product-image"/> 
+                                <h4 className="product-name">{x.name}</h4>
+                                <div className="review">
+                                    { createStars(x.feedback) }
+                                    <p className="product-feedback">{x.feedback}</p> 
+                                </div>
+                                <h3 className="product-price">R$ {priceConverted}</h3>
+                            </div>
+                        </div>
+                    )})
                 }
             </div>
         </>
