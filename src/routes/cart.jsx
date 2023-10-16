@@ -22,6 +22,18 @@ export default function cart() {
         return starArray;
     }
 
+    const addToFavorites = (id) => {
+        if(favoriteProducts[id - 1] == undefined) {
+            const updatedFavorites = [...favoriteProducts];
+            updatedFavorites[id - 1] = id;
+            setFavoriteProducts(updatedFavorites)
+        } else {
+            const updatedFavorites = [...favoriteProducts];
+            updatedFavorites[id - 1] = undefined;
+            setFavoriteProducts(updatedFavorites)
+        }
+    }
+
     function listCart() {
         for(let i = 0; i < item.length; i++){
             if(cartProducts.includes(item[i].id)){
@@ -41,8 +53,10 @@ export default function cart() {
                             <img src={item[i].photo} alt="imagem do produto" className="product-cart-image"/> 
                             <div>
                                 <h4 className="product-name">{item[i].name}</h4>
-                                { createStars(item[i].feedback) }
-                                <p className="product-feedback">{item[i].feedback}</p> 
+                                <div className="review">
+                                    { createStars(item[i].feedback) }
+                                    <p className="product-feedback">{item[i].feedback}</p> 
+                                </div>
                                 <h3 style={{margin: 0}}><span className="product-price">R$ {item[i].price}</span></h3>
                             </div>
                         </div>
@@ -71,14 +85,35 @@ export default function cart() {
     sumItems()
 
     return(
-        <div>
-            <div className="cart-products">
-                { cartList }
-            </div>
+        <div className="cart-page">
+            { 
+                cartList.length >= 1 
+                ? 
+                <>
+                    <div className="cart-products">
+                        { cartList }
+                    </div>
 
-            <div className="cart-info">
-                <p>Total price: R${ priceConverted }</p>
-            </div>
+                    <div className="cart-info">
+                        <p>Purchase details</p>
+                        <hr style={{border: "none", backgroundColor: "#d4d4d4", height: "0.010rem"}}/>
+                        <div className="cart-paragraph">
+                            <h6>Products({ cartList.length }): </h6>
+                            <h6>R${ priceConverted }</h6>
+                        </div>
+                        <div className="cart-paragraph">
+                            <p><strong>Total: </strong></p>
+                            <p><strong>R${ priceConverted }</strong></p>
+                        </div>
+                        <button className="cart-buy-button"><b>Buy</b></button>
+                    </div>
+                </>
+
+                : <div className="noItems-cart">
+                    <p>Add items to your cart</p>
+                    <p onClick={() => navigate("/")} className="search-products">Search for Products</p>
+                </div>
+            }
         </div>
     )
 }

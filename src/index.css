@@ -35,6 +35,7 @@ body {
   border-bottom: 1px solid #d4d4d4;
   text-decoration: none;
   color: #000;
+  background-color: #fff;
 }
 
 .searchbar-navigate {
@@ -49,7 +50,7 @@ body {
   outline: none;
   border: none;
   border-radius: 5px;
-  background-color: #d4d4d4;
+  background-color: #dddada;
 }
 
 .outlet {
@@ -58,6 +59,11 @@ body {
   align-items: center;
   padding: 7.5rem 5rem 0rem 5rem;
   flex-direction: column;
+}
+
+.main-container {
+  background-color: #f7f7f7;
+  min-height: 100vh;
 }
 
 .sb-home {
@@ -76,6 +82,7 @@ body {
   cursor: pointer;
   text-decoration: none;
   position: relative;
+  background-color: #fff;
 }
 
 .product {
@@ -169,6 +176,7 @@ body {
 }
 
 .favorite-button, .cart-button {
+  cursor: pointer;
   width: 2rem;
   min-height: 2rem;
   border-radius: 50%;
@@ -206,6 +214,19 @@ body {
   border-radius: 5px;
 }
 
+.cart-buy-button {
+  margin-top: 1rem;
+  margin-right: 3rem;
+  width: 100%;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+  background-color: #1068cc;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 .product-cart-button {
   cursor: pointer;
   border: 1px solid #1068cc;
@@ -225,6 +246,20 @@ body {
   width: 22rem;
 }
 
+.cart-page {
+  display: flex;
+  gap: 2rem;
+}
+
+.cart-info {
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: #fff;
+  width: 20rem;
+  max-height: 20rem;
+}
+
 .product-cart {
   position: relative;
   display: flex;
@@ -232,11 +267,27 @@ body {
   height: 8rem;
   border-radius: 5px;
   border: 1px solid #d4d4d4;
+  background-color: #fff;
 }
+
+.cart-paragraph {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-paragraph > p, h6 {
+  margin-block: .5rem;
+} 
 
 .product-cart-image {
   width: 5rem;
   max-height: 6rem;
+}
+
+.cart-products {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 
 .cart-item {
@@ -246,4 +297,22 @@ body {
   gap: 1.5rem;
   padding: .5rem;
   cursor: pointer;
+}
+
+.noItems-cart  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-products {
+  width: 100%;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+  background-color: #1068cc;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
 }

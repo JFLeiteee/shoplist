@@ -37,7 +37,6 @@ export default function home() {
     }
 
     const addToCart = (id) => {
-        console.log("opa")
         if(cartProducts[id - 1] == undefined) {
             const updatedCart = [...cartProducts];
             updatedCart[id - 1] = id;

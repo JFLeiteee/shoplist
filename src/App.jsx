@@ -18,14 +18,14 @@ function App() {
   }
 
   return (
-    <>
+    <div className="main-container">
         <Searchbar onSearch={handleSearch}/>
         <div className="outlet">
           <Outlet 
             context={[items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults]}
           />
         </div>
-    </>
+    </div>
   )
 }
 

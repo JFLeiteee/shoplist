@@ -8,7 +8,7 @@ import colorCart from "../assets/color-cart.png"
 export default function product() {
     const { id } = useParams();
 
-    const [item, favoriteProducts, setFavoriteProducts] = useOutletContext();
+    const [item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts] = useOutletContext();
 
     let priceConverted = item[id - 1].price.toString()
     priceConverted = priceConverted.replace(".", ",")
@@ -33,6 +33,18 @@ export default function product() {
         }
     }
 
+    const addToCart = (id) => {
+        if(cartProducts[id - 1] == undefined) {
+            const updatedCart = [...cartProducts];
+            updatedCart[id - 1] = id;
+            setCartProducts(updatedCart)
+        } else {
+            const updatedCart = [...cartProducts];
+            updatedCart[id - 1] = undefined;
+            setCartProducts(updatedCart)
+        }
+    }
+
     return(
         <div className="product-page">
             <div className="superior">
@@ -45,7 +57,7 @@ export default function product() {
                     <h1>{item[id - 1].name}</h1>
                     <h2><span className="product-price">R$ {priceConverted}</span></h2>
                     <button className="buy-button"><b>Buy</b></button>
-                    <button className="product-cart-button">
+                    <button className="product-cart-button" onClick={() => addToCart(item[id - 1].id)}>
                         <div style={{display: "flex", justifyContent: "center", placeItems:"center", gap:".5rem"}}>
                             <img src={colorCart} className="cart-icon"/>
                             <b>Add to cart</b>

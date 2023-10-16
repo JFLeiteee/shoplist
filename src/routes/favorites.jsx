@@ -7,7 +7,7 @@ import cartIcon from "../assets/cart-icon.png"
 
 
 export default function favorites() {
-    const [item, favoriteProducts, setFavoriteProducts] = useOutletContext()
+    const [item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts] = useOutletContext()
 
     let favoriteList = []
 
@@ -33,6 +33,18 @@ export default function favorites() {
         }
     }
 
+    const addToCart = (id) => {
+        if(cartProducts[id - 1] == undefined) {
+            const updatedCart = [...cartProducts];
+            updatedCart[id - 1] = id;
+            setCartProducts(updatedCart)
+        } else {
+            const updatedCart = [...cartProducts];
+            updatedCart[id - 1] = undefined;
+            setCartProducts(updatedCart)
+        }
+    }
+
     function listFavorites() {
         for(let i = 0; i < item.length; i++){
             if(favoriteProducts.includes(item[i].id)){
@@ -43,7 +55,7 @@ export default function favorites() {
                 favoriteList.push(
                     <div className="product-card" key={item[i].id}>
                         <div className="top-buttons">
-                        <div className="cart-button">
+                        <div className="cart-button" onClick={() => addToCart(item[i].id)}>
                                     <img key={item[i].id} src={cartIcon} className="cart-icon"/>
                                 </div>
 
@@ -65,6 +77,7 @@ export default function favorites() {
                 )
             }
         }
+        console.log(favoriteList)
         return favoriteList
     } 
 
@@ -72,10 +85,17 @@ export default function favorites() {
 
     return(
         <div className="favorite-page">
-            <h1>my favorites</h1>
-            <div className="home-products">
-                { favoriteList }
-            </div>
+            {   
+                favoriteList.length >= 1
+                ?   <>
+                    <h1>my favorites</h1>
+                    <div className="home-products">
+                        { favoriteList }
+                    </div>
+                </>
+
+                : <p>Add items to your favorite</p>
+            }
         </div>
     )
 }
