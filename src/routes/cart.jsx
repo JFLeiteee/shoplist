@@ -1,4 +1,5 @@
 import { Link, useOutletContext, useNavigate, redirect } from "react-router-dom"
+import { useState } from "react"
 import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
@@ -11,6 +12,7 @@ export default function cart() {
     let cartList = []
     let totalPrice = 0;
     let priceConverted = ""
+    let totalItems = 0;
 
     const navigate = useNavigate();
 
@@ -22,21 +24,34 @@ export default function cart() {
         return starArray;
     }
 
-    const addToFavorites = (id) => {
-        if(favoriteProducts[id - 1] == undefined) {
-            const updatedFavorites = [...favoriteProducts];
-            updatedFavorites[id - 1] = id;
-            setFavoriteProducts(updatedFavorites)
+    const addToCart = (id) => {
+        if(cartProducts[id - 1] == undefined) {
+            const updatedCart = [...cartProducts];
+            updatedCart[id - 1] = id;
+            setCartProducts(updatedCart)
         } else {
-            const updatedFavorites = [...favoriteProducts];
-            updatedFavorites[id - 1] = undefined;
-            setFavoriteProducts(updatedFavorites)
+            const updatedCart = [...cartProducts];
+            updatedCart[id - 1] = undefined;
+            setCartProducts(updatedCart)
         }
     }
 
     function listCart() {
         for(let i = 0; i < item.length; i++){
             if(cartProducts.includes(item[i].id)){
+                let priceConverted = item[i].price.toString();
+                priceConverted = priceConverted.replace(".", ",")
+
+                const [quantity, setQuantity] = useState(1);
+
+                function handleQuantity(){
+                    if(event.target.value === "-"){
+                        setQuantity(quantity => quantity - 1);
+                    } else {
+                        setQuantity(quantity => quantity + 1);
+                    }
+                }
+
                 cartList.push(
                     <div className="product-cart" key={item[i].id}>
                         <div onClick={() => navigate(`/product/${item[i].id}`)} key={item[i].id} className="cart-item">
@@ -47,9 +62,17 @@ export default function cart() {
                                     { createStars(item[i].feedback) }
                                     <p className="product-feedback">{item[i].feedback}</p> 
                                 </div>
-                                <h3 style={{margin: 0}}><span className="product-price">R$ {item[i].price}</span></h3>
+                                <h3 style={{margin: 0}}><span className="product-price">R$ {priceConverted}</span></h3>
                             </div>
                         </div>
+                        <div className="cart-options">
+                            <div className="cart-quantity">    
+                                <button className="quantity-button" onClick={handleQuantity} value={"-"}>-</button>
+                                <p className="number-quantity">{quantity}</p>
+                                <button className="quantity-button" onClick={handleQuantity} value={"+"}>+</button>
+                            </div>
+                        </div>
+                            <p className="cart-delete-item" onClick={() => addToCart(item[i].id)}>Excluir</p>
                     </div>
                 )
             }
@@ -88,7 +111,7 @@ export default function cart() {
                         <p>Purchase details</p>
                         <hr style={{border: "none", backgroundColor: "#d4d4d4", height: "0.010rem"}}/>
                         <div className="cart-paragraph">
-                            <h6>Products({ cartList.length }): </h6>
+                            <h6>Products({ totalItems }): </h6>
                             <h6>R${ priceConverted }</h6>
                         </div>
                         <div className="cart-paragraph">

@@ -299,6 +299,43 @@ body {
   border-radius: 5px;
   border: 1px solid #d4d4d4;
   background-color: #fff;
+  justify-content: space-between;
+}
+
+.cart-options {
+  align-self: center;
+  padding-right: 2rem;
+}
+
+.cart-quantity {
+  display: flex;
+  height: 1.5rem;
+  max-width: 5.5rem;
+  min-width: 5.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  gap: .8rem;
+  border: 1px solid #d4d4d4;
+}
+
+.quantity-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.number-quantity {
+  align-self: center;
+}
+
+.cart-delete-item {
+  cursor: pointer;
+  color: #ca4260;
+  text-decoration: underline;
+  align-self: center;
+  padding-right: 2rem;
 }
 
 .cart-paragraph {
@@ -328,6 +365,7 @@ body {
   gap: 1.5rem;
   padding: .5rem;
   cursor: pointer;
+  max-width: 25rem;
 }
 
 .noItems-cart  {
