@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useOutletContext, Link } from "react-router-dom"
+import { useState, useContext } from "react"
 
 export default function searchbar({onSearch}) {
     const [search, setSearch] = useState()
@@ -7,7 +7,9 @@ export default function searchbar({onSearch}) {
     function handleChange(event) {
         setSearch(event.target.value)
         onSearch(search)
-    }
+    }   
+
+    const {cartProducts, setCartProducts} = useContext(null);
 
     return(
         <div className="searchbar">
@@ -19,7 +21,14 @@ export default function searchbar({onSearch}) {
                 onChange={handleChange}
             />
             <Link to="favorites" className="searchbar-navigate">Favorites</Link>
-            <Link to="cart" className="searchbar-navigate">Cart</Link>
+            <Link to="cart" className="searchbar-navigate">
+                {
+                    cartProducts >= 1
+                    ? console.log("cart: ")
+                    : <div></div>
+                }
+                Cart
+            </Link>
         </div>
     )
 }

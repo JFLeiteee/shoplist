@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom"
 import Sidebar from "./components/Sidebar"
 import Searchbar from "./components/Searchbar"
 import data from "./data"
-import { useState } from "react"
+import { useState, createContext, useContext } from "react"
 
 function App() {
 
@@ -11,6 +11,7 @@ function App() {
   const [favoriteProducts, setFavoriteProducts] = useState([]) 
   const [cartProducts, setCartProducts] = useState([])
   const [searchResults, setSearchResults] = useState([]) 
+  const [numberCartProducts, setNumberCartProducts] = useState(0) 
 
   function handleSearch(search) {
     const searchFilter = items.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
@@ -18,14 +19,12 @@ function App() {
   }
 
   return (
-    <div className="main-container">
-        <Searchbar onSearch={handleSearch}/>
-        <div className="outlet">
-          <Outlet 
-            context={[items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults]}
-          />
-        </div>
-    </div>
+      <div className="main-container">
+          <Searchbar onSearch={handleSearch} />
+          <div className="outlet">
+            <Outlet/>
+          </div>
+      </div>
   )
 }
 

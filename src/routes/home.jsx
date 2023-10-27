@@ -1,5 +1,5 @@
 import { Link, useOutletContext, useNavigate } from "react-router-dom"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
@@ -10,7 +10,7 @@ export default function home() {
     const [isFilterApplied, setIsFilterApplied] = useState(false)
     const [filters, setFilters] = useState([])
 
-    const [item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults] = useOutletContext();
+    const {item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults} = useContext(null);
 
     const navigate = useNavigate();
 

@@ -41,6 +41,15 @@ body {
 .searchbar-navigate {
   text-decoration: none;
   color: #000;
+  position: relative;
+}
+
+.searchbar-cart-number {
+  position: absolute;
+  background-color: #000;
+  color: #fff;
+  padding: .5rem;
+  border-radius: 50%;
 }
 
 .searchbar-search {

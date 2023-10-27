@@ -4,10 +4,11 @@ import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
 import cartIcon from "../assets/cart-icon.png"
+import { useContext } from "react"
 
 
 export default function favorites() {
-    const [item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts] = useOutletContext()
+    const {item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(null)
 
     let favoriteList = []
 

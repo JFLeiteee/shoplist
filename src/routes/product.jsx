@@ -4,11 +4,12 @@ import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
 import colorCart from "../assets/color-cart.png"
+import { useContext } from "react"
 
 export default function product() {
     const { id } = useParams();
 
-    const [item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts] = useOutletContext();
+    const {item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(null);
 
     let priceConverted = item[id - 1].price.toString()
     priceConverted = priceConverted.replace(".", ",")

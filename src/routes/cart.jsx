@@ -1,5 +1,5 @@
 import { Link, useOutletContext, useNavigate, redirect } from "react-router-dom"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
@@ -7,7 +7,7 @@ import heartFilled from "../assets/heart-filled.png"
 import cartIcon from "../assets/cart-icon.png"
 
 export default function cart() {
-    const [item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts] = useOutletContext()
+    const {item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(null)
 
     let cartList = []
     let totalPrice = 0;
