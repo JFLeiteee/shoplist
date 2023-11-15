@@ -1,29 +1,17 @@
 import { Outlet } from "react-router-dom"
-import Sidebar from "./components/Sidebar"
 import Searchbar from "./components/Searchbar"
-import data from "./data"
-import { useState } from "react"
+import { useContext } from "react"
+import { VariableContext } from "./context/variableContext"
 
 function App() {
 
-  const [items, setItems] = useState(data)
-
-  const [favoriteProducts, setFavoriteProducts] = useState([]) 
-  const [cartProducts, setCartProducts] = useState([])
-  const [searchResults, setSearchResults] = useState([]) 
-
-  function handleSearch(search) {
-    const searchFilter = items.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
-    setSearchResults(searchFilter)
-  }
+  const { handleSearch } = useContext(VariableContext)
 
   return (
     <div className="main-container">
         <Searchbar onSearch={handleSearch}/>
         <div className="outlet">
-          <Outlet 
-            context={[items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults]}
-          />
+          <Outlet />
         </div>
     </div>
   )

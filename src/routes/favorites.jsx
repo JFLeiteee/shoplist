@@ -4,10 +4,11 @@ import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
 import cartIcon from "../assets/cart-icon.png"
-
+import { useContext } from "react"
+import { VariableContext } from "../context/variableContext"
 
 export default function favorites() {
-    const [item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts] = useOutletContext()
+    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(VariableContext)
 
     let favoriteList = []
 
@@ -46,30 +47,30 @@ export default function favorites() {
     }
 
     function listFavorites() {
-        for(let i = 0; i < item.length; i++){
-            if(favoriteProducts.includes(item[i].id)){
+        for(let i = 0; i < items.length; i++){
+            if(favoriteProducts.includes(items[i].id)){
 
-                let priceConverted = item[i].price.toString();
+                let priceConverted = items[i].price.toString();
                 priceConverted = priceConverted.replace(".", ",")
 
                 favoriteList.push(
-                    <div className="product-card" key={item[i].id}>
+                    <div className="product-card" key={items[i].id}>
                         <div className="top-buttons">
-                        <div className="cart-button" onClick={() => addToCart(item[i].id)}>
-                                    <img key={item[i].id} src={cartIcon} className="cart-icon"/>
+                        <div className="cart-button" onClick={() => addToCart(items[i].id)}>
+                                    <img key={items[i].id} src={cartIcon} className="cart-icon"/>
                                 </div>
 
-                            <div className="favorite-button" onClick={() => addToFavorites(item[i].id)}>
-                                <img key={item[i].id} src={favoriteProducts[item[i].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
+                            <div className="favorite-button" onClick={() => addToFavorites(items[i].id)}>
+                                <img key={items[i].id} src={favoriteProducts[items[i].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
                             </div>
                         </div>
 
-                        <div onClick={() => navigate(`/product/${item[i].id}`)} key={item[i].id} className="product">
-                            <img src={item[i].photo} alt="imagem do produto" className="product-image"/> 
-                            <h4 className="product-name">{item[i].name}</h4>
+                        <div onClick={() => navigate(`/product/${items[i].id}`)} key={items[i].id} className="product">
+                            <img src={items[i].photo} alt="imagem do produto" className="product-image"/> 
+                            <h4 className="product-name">{items[i].name}</h4>
                             <div className="review">
-                                { createStars(item[i].feedback) }
-                                <p className="product-feedback">{item[i].feedback}</p> 
+                                { createStars(items[i].feedback) }
+                                <p className="product-feedback">{items[i].feedback}</p> 
                             </div>
                             <h3 className="product-price">R$ {priceConverted}</h3>
                         </div>
