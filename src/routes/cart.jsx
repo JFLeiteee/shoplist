@@ -60,7 +60,6 @@ export default function cart() {
                                     { createStars(items[i].feedback) }
                                     <p className="product-feedback">{items[i].feedback}</p> 
                                 </div>
-                                <h3 style={{margin: 0}}><span className="product-price">R$ {priceConverted}</span></h3>
                                 <h3 style={{margin: 0}}><span className="product-price">R$ {items[i].price}</span></h3>
                             </div>
                         </div>
