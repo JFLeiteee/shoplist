@@ -1,16 +1,24 @@
+<<<<<<< HEAD
 import { Link, useOutletContext, useNavigate } from "react-router-dom"
 import { useState, useEffect, useContext } from "react";
+=======
+import { useNavigate } from "react-router-dom"
+import { useState, useContext   } from "react";
+>>>>>>> reoperating
 import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
 import cartIcon from "../assets/cart-icon.png"
+import { VariableContext } from "../context/variableContext"
 
 export default function home() {
-    const [isFilterApplied, setIsFilterApplied] = useState(false)
-    const [filters, setFilters] = useState([])
 
+<<<<<<< HEAD
     const {item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults} = useContext(null);
+=======
+    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults} = useContext(VariableContext)
+>>>>>>> reoperating
 
     const navigate = useNavigate();
 
@@ -81,7 +89,7 @@ export default function home() {
                         </div>
                     )})
 
-                    : item.map(x => {
+                    : items.map(x => {
 
                         priceConverted = x.price.toString();
                         priceConverted = priceConverted.replace(".", ",")

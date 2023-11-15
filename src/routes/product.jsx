@@ -1,17 +1,27 @@
-import { useParams, useOutletContext } from "react-router-dom"
+import { useParams} from "react-router-dom"
 import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
 import colorCart from "../assets/color-cart.png"
 import { useContext } from "react"
+<<<<<<< HEAD
+=======
+import { VariableContext } from "../context/variableContext"
+>>>>>>> reoperating
 
 export default function product() {
     const { id } = useParams();
 
+<<<<<<< HEAD
     const {item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(null);
 
     let priceConverted = item[id - 1].price.toString()
+=======
+    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(VariableContext)
+    
+    let priceConverted = items[id - 1].price.toString()
+>>>>>>> reoperating
     priceConverted = priceConverted.replace(".", ",")
 
     function createStars(feedback) {
@@ -50,22 +60,22 @@ export default function product() {
         <div className="product-page">
             <div className="superior">
                 <div className="product-image-container">
-                    <img src={item[id - 1].photo} alt="product image" className="product-showoff"/>
+                    <img src={items[id - 1].photo} alt="product image" className="product-showoff"/>
                 </div>
                 <div className="product-related">
                     <div className="review">
-                        {createStars(item[id - 1].feedback)}
-                        <h3 className="product-feedback">{item[id - 1].feedback}</h3>
+                        {createStars(items[id - 1].feedback)}
+                        <h3 className="product-feedback">{items[id - 1].feedback}</h3>
 
-                        <div id="favorite-button-product" onClick={() => addToFavorites(item[id - 1].id)}>
-                            <img key={item[id - 1].id} src={favoriteProducts[item[id - 1].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
+                        <div id="favorite-button-product" onClick={() => addToFavorites(items[id - 1].id)}>
+                            <img key={items[id - 1].id} src={favoriteProducts[items[id - 1].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
                         </div>
                     </div>
-                    <h1 style={{marginTop: "0"}}>{item[id - 1].name}</h1>
+                    <h1 style={{marginTop: "0"}}>{items[id - 1].name}</h1>
                     <h2><span className="product-price">R$ {priceConverted}</span></h2>
                     <div className="product-buttons" style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                         <button className="buy-button"><b>Buy</b></button>
-                        <button className="product-cart-button" onClick={() => addToCart(item[id - 1].id)}>
+                        <button className="product-cart-button" onClick={() => addToCart(items[id - 1].id)}>
                             <div style={{display: "flex", justifyContent: "center", placeItems:"center", gap:".5rem"}}>
                                 <img src={colorCart} className="cart-icon"/>
                                 <b>Add to cart</b>

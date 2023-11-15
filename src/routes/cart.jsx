@@ -2,12 +2,15 @@ import { Link, useOutletContext, useNavigate, redirect } from "react-router-dom"
 import { useState, useContext } from "react"
 import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
-import heartOutline from "../assets/heart-outline.png"
-import heartFilled from "../assets/heart-filled.png"
-import cartIcon from "../assets/cart-icon.png"
+import { useContext } from "react"
+import { VariableContext } from "../context/variableContext"
 
 export default function cart() {
+<<<<<<< HEAD
     const {item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(null)
+=======
+    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(VariableContext)
+>>>>>>> reoperating
 
     let cartList = []
     let totalPrice = 0;
@@ -37,6 +40,7 @@ export default function cart() {
     }
 
     function listCart() {
+<<<<<<< HEAD
         for(let i = 0; i < item.length; i++){
             if(cartProducts.includes(item[i].id)){
                 let priceConverted = item[i].price.toString();
@@ -52,17 +56,25 @@ export default function cart() {
                     }
                 }
 
+=======
+        for(let i = 0; i < items.length; i++){
+            if(cartProducts.includes(items[i].id)){
+>>>>>>> reoperating
                 cartList.push(
-                    <div className="product-cart" key={item[i].id}>
-                        <div onClick={() => navigate(`/product/${item[i].id}`)} key={item[i].id} className="cart-item">
-                            <img src={item[i].photo} alt="imagem do produto" className="product-cart-image"/> 
+                    <div className="product-cart" key={items[i].id}>
+                        <div onClick={() => navigate(`/product/${items[i].id}`)} key={items[i].id} className="cart-item">
+                            <img src={items[i].photo} alt="imagem do produto" className="product-cart-image"/> 
                             <div>
-                                <h4 className="product-name">{item[i].name}</h4>
+                                <h4 className="product-name">{items[i].name}</h4>
                                 <div className="review">
-                                    { createStars(item[i].feedback) }
-                                    <p className="product-feedback">{item[i].feedback}</p> 
+                                    { createStars(items[i].feedback) }
+                                    <p className="product-feedback">{items[i].feedback}</p> 
                                 </div>
+<<<<<<< HEAD
                                 <h3 style={{margin: 0}}><span className="product-price">R$ {priceConverted}</span></h3>
+=======
+                                <h3 style={{margin: 0}}><span className="product-price">R$ {items[i].price}</span></h3>
+>>>>>>> reoperating
                             </div>
                         </div>
                         <div className="cart-options">
@@ -83,10 +95,10 @@ export default function cart() {
     listCart()
 
     function sumItems() {
-        for(let i = 0; i < item.length; i++) {
-            if(cartProducts.includes(item[i].id)){  
-                let itemPrice = item[i].price
-                totalPrice = Number.parseFloat(totalPrice) + Number.parseFloat(itemPrice)
+        for(let i = 0; i < items.length; i++) {
+            if(cartProducts.includes(items[i].id)){  
+                let itemsPrice = items[i].price
+                totalPrice = Number.parseFloat(totalPrice) + Number.parseFloat(itemsPrice)
                 totalPrice = totalPrice.toFixed(2)
             }
         }

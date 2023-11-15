@@ -36,8 +36,12 @@ const router = createBrowserRouter([
   }
 ])
 
+import { ContextProvider } from './context/variableContext.jsx'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <ContextProvider>
+      <RouterProvider router={router}/>
+    </ContextProvider>
   </React.StrictMode>,
 )
