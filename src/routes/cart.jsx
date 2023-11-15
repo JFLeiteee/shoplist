@@ -6,11 +6,7 @@ import { useContext } from "react"
 import { VariableContext } from "../context/variableContext"
 
 export default function cart() {
-<<<<<<< HEAD
-    const {item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(null)
-=======
     const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(VariableContext)
->>>>>>> reoperating
 
     let cartList = []
     let totalPrice = 0;
@@ -40,10 +36,9 @@ export default function cart() {
     }
 
     function listCart() {
-<<<<<<< HEAD
-        for(let i = 0; i < item.length; i++){
-            if(cartProducts.includes(item[i].id)){
-                let priceConverted = item[i].price.toString();
+        for(let i = 0; i < items.length; i++){
+            if(cartProducts.includes(items[i].id)){
+                let priceConverted = items[i].price.toString();
                 priceConverted = priceConverted.replace(".", ",")
 
                 const [quantity, setQuantity] = useState(1);
@@ -56,10 +51,6 @@ export default function cart() {
                     }
                 }
 
-=======
-        for(let i = 0; i < items.length; i++){
-            if(cartProducts.includes(items[i].id)){
->>>>>>> reoperating
                 cartList.push(
                     <div className="product-cart" key={items[i].id}>
                         <div onClick={() => navigate(`/product/${items[i].id}`)} key={items[i].id} className="cart-item">
@@ -70,11 +61,8 @@ export default function cart() {
                                     { createStars(items[i].feedback) }
                                     <p className="product-feedback">{items[i].feedback}</p> 
                                 </div>
-<<<<<<< HEAD
                                 <h3 style={{margin: 0}}><span className="product-price">R$ {priceConverted}</span></h3>
-=======
                                 <h3 style={{margin: 0}}><span className="product-price">R$ {items[i].price}</span></h3>
->>>>>>> reoperating
                             </div>
                         </div>
                         <div className="cart-options">
