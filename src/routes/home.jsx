@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { Link, useOutletContext, useNavigate } from "react-router-dom"
-import { useState, useEffect, useContext } from "react";
-=======
 import { useNavigate } from "react-router-dom"
 import { useState, useContext   } from "react";
->>>>>>> reoperating
 import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
@@ -14,11 +9,7 @@ import { VariableContext } from "../context/variableContext"
 
 export default function home() {
 
-<<<<<<< HEAD
-    const {item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults} = useContext(null);
-=======
     const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults} = useContext(VariableContext)
->>>>>>> reoperating
 
     const navigate = useNavigate();
 

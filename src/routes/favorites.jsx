@@ -5,17 +5,10 @@ import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
 import cartIcon from "../assets/cart-icon.png"
 import { useContext } from "react"
-<<<<<<< HEAD
-
-
-export default function favorites() {
-    const {item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(null)
-=======
 import { VariableContext } from "../context/variableContext"
 
 export default function favorites() {
     const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(VariableContext)
->>>>>>> reoperating
 
     let favoriteList = []
 

@@ -2,7 +2,6 @@ import { Link, useOutletContext, useNavigate, redirect } from "react-router-dom"
 import { useState, useContext } from "react"
 import starFilled from "../assets/star-filled.png"
 import starOutline from "../assets/star-outline.png"
-import { useContext } from "react"
 import { VariableContext } from "../context/variableContext"
 
 export default function cart() {

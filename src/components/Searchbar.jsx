@@ -1,5 +1,6 @@
 import { useOutletContext, Link } from "react-router-dom"
 import { useState, useContext } from "react"
+import { VariableContext } from "../context/variableContext"
 
 export default function searchbar({onSearch}) {
     const [search, setSearch] = useState()
@@ -9,7 +10,7 @@ export default function searchbar({onSearch}) {
         onSearch(search)
     }   
 
-    const {cartProducts, setCartProducts} = useContext(null);
+    const {cartProducts, setCartProducts} = useContext(VariableContext);
 
     return(
         <div className="searchbar">

@@ -5,23 +5,14 @@ import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
 import colorCart from "../assets/color-cart.png"
 import { useContext } from "react"
-<<<<<<< HEAD
-=======
 import { VariableContext } from "../context/variableContext"
->>>>>>> reoperating
 
 export default function product() {
     const { id } = useParams();
 
-<<<<<<< HEAD
-    const {item, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(null);
-
-    let priceConverted = item[id - 1].price.toString()
-=======
     const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(VariableContext)
     
     let priceConverted = items[id - 1].price.toString()
->>>>>>> reoperating
     priceConverted = priceConverted.replace(".", ",")
 
     function createStars(feedback) {
