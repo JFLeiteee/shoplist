@@ -22,6 +22,11 @@ body {
   padding: 5rem 0 0 25rem ;
 }
 
+.banner {
+  /* width: 100%; */
+  margin: 0 0 3rem 0;
+}
+
 /* SEARCHBAR */
 .searchbar {
   position: absolute;
@@ -97,10 +102,11 @@ body {
 .product {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   max-width: 15rem;
-  height: 25rem;
+  height: 100%;
   padding: 1rem;
+  gap: 3rem;
 }
 
 .product-card:hover {
@@ -115,7 +121,7 @@ body {
 .product-price {
   font-family: "Poppins Bold";
   color: #1068cc;
-  margin: 3rem 0 0 0;
+  margin: 0rem 0 0 0;
 }
 
 .product-feedback {
@@ -205,6 +211,7 @@ body {
   right: .5rem;
   display: flex;
   gap: .5rem;
+  z-index: 99;
 }
 
 .favorite-button, .cart-button {

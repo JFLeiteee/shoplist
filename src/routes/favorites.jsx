@@ -8,76 +8,71 @@ import { useContext } from "react"
 import { VariableContext } from "../context/variableContext"
 
 export default function favorites() {
-    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(VariableContext)
+    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, createStars} = useContext(VariableContext)
 
     let favoriteList = []
 
     const navigate = useNavigate();
 
-    function createStars(feedback) {
-        let starArray = []
-        for(let i = 0; i <= 4; i++){
-            starArray.push(<img key={i} src={feedback >= i + 1 ? starFilled : starOutline} alt="" className="stars-feedback"/>)
-        }
-        return starArray;
-    }
-
     const addToFavorites = (id) => {
-        if(favoriteProducts[id - 1] == undefined) {
-            const updatedFavorites = [...favoriteProducts];
-            updatedFavorites[id - 1] = id;
-            setFavoriteProducts(updatedFavorites)
-        } else {
-            const updatedFavorites = [...favoriteProducts];
-            updatedFavorites[id - 1] = undefined;
-            setFavoriteProducts(updatedFavorites)
+        if(favoriteProducts.includes(id) == false){
+            const updatedFavorites = [...favoriteProducts]
+            updatedFavorites.push(id);
+            setFavoriteProducts(updatedFavorites);
+        } 
+        else {
+            const updatedFavorites = [...favoriteProducts]
+            updatedFavorites.splice(updatedFavorites.indexOf(id), 1)
+            setFavoriteProducts(updatedFavorites);
         }
     }
 
     const addToCart = (id) => {
-        if(cartProducts[id - 1] == undefined) {
+        if(cartProducts.includes(id) == false){
             const updatedCart = [...cartProducts];
-            updatedCart[id - 1] = id;
+            updatedCart.push(id);
             setCartProducts(updatedCart)
         } else {
             const updatedCart = [...cartProducts];
-            updatedCart[id - 1] = undefined;
+            updatedCart.splice(updatedCart.indexOf(id), 1)
             setCartProducts(updatedCart)
         }
     }
 
     function listFavorites() {
-        for(let i = 0; i < items.length; i++){
-            if(favoriteProducts.includes(items[i].id)){
+       
+            favoriteProducts.map(i => {
 
-                let priceConverted = items[i].price.toString();
+                let priceConverted = items[i - 1].price.toString();
                 priceConverted = priceConverted.replace(".", ",")
 
                 favoriteList.push(
-                    <div className="product-card" key={items[i].id}>
+                    <div className="product-card" key={items[i - 1].id}>
                         <div className="top-buttons">
-                        <div className="cart-button" onClick={() => addToCart(items[i].id)}>
-                                    <img key={items[i].id} src={cartIcon} className="cart-icon"/>
+                        <div className="cart-button" onClick={() => addToCart(items[i - 1].id)}>
+                                    <img key={items[i - 1].id} src={cartIcon} className="cart-icon"/>
                                 </div>
 
-                            <div className="favorite-button" onClick={() => addToFavorites(items[i].id)}>
-                                <img key={items[i].id} src={favoriteProducts[items[i].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
+                            <div className="favorite-button" onClick={() => addToFavorites(items[i - 1].id)}>
+                                <img key={items[i - 1].id} src={favoriteProducts.includes(items[i - 1].id) ? heartFilled : heartOutline} className="heart-icon"/>
                             </div>
                         </div>
 
-                        <div onClick={() => navigate(`/product/${items[i].id}`)} key={items[i].id} className="product">
-                            <img src={items[i].photo} alt="imagem do produto" className="product-image"/> 
-                            <h4 className="product-name">{items[i].name}</h4>
-                            <div className="review">
-                                { createStars(items[i].feedback) }
-                                <p className="product-feedback">{items[i].feedback}</p> 
-                            </div>
-                            <h3 className="product-price">R$ {priceConverted}</h3>
+                        <div onClick={() => navigate(`/product/${items[i - 1].id}`)} key={items[i - 1].id} className="product">
+                            <img src={items[i - 1].photo} alt="imagem do produto" className="product-image"/>
+                            <div className="about-product">    
+                                <h4 className="product-name">{items[i - 1].name}</h4>
+                                <div className="review">
+                                    { createStars(items[i - 1].feedback) }
+                                    <p className="product-feedback">{items[i - 1].feedback}</p> 
+                                </div>
+                                <h3 className="product-price">R$ {priceConverted}</h3>
+                            </div> 
                         </div>
                     </div>
                 )
             }
-        }
+        )
         console.log(favoriteList)
         return favoriteList
     } 

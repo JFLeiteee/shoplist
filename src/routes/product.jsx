@@ -10,18 +10,10 @@ import { VariableContext } from "../context/variableContext"
 export default function product() {
     const { id } = useParams();
 
-    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts} = useContext(VariableContext)
+    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, createStars} = useContext(VariableContext)
     
     let priceConverted = items[id - 1].price.toString()
     priceConverted = priceConverted.replace(".", ",")
-
-    function createStars(feedback) {
-        let starArray = []
-        for(let i = 0; i <= 4; i++){
-            starArray.push(<img key={i} src={feedback >= i + 1 ? starFilled : starOutline} alt="" className="stars-feedback"/>)
-        }
-        return starArray;
-    }
 
     const addToFavorites = (id) => {
         if(favoriteProducts[id - 1] == undefined) {
