@@ -17,10 +17,11 @@ export const ContextProvider = ({children}) => {
     }
 
     function createStars(feedback) {
-        let starArray = []
-        for(let i = 0; i <= 4; i++){
-            starArray.push(<img key={i} src={feedback >= i + 1 ? starFilled : starOutline} alt="" className="stars-feedback"/>)
-        }
+        let starArray = <img src={starFilled} className="stars-feedback"/>
+        // for(let i = 0; i <= 4; i++){
+        //     starArray.push(<img key={i} src={feedback >= i + 1 ? starFilled : starOutline} alt="" className="stars-feedback"/>)
+        // }
+        
         return starArray;
     }
 

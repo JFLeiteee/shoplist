@@ -1,7 +1,7 @@
 export default [
     {
         id: 1,
-        name: "Iphone 14 Plus",
+        name: "Iphone 14 Plus 128GB",
         price: "5219.10",
         feedback: 4.8,
         photo: "/img/iphone_14.png",

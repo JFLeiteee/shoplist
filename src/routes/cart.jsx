@@ -7,7 +7,8 @@ import { VariableContext } from "../context/variableContext"
 export default function cart() {
     const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, createStars} = useContext(VariableContext)
 
-    const [quantity, setQuantity] = useState(1);
+    const teste = Array.from({ length: 5 }, () => 1)
+    const [quantity, setQuantity] = useState(teste);
 
     let cartList = []
     let totalPrice = 0;
@@ -30,23 +31,37 @@ export default function cart() {
 
     function listCart() {
         cartProducts.map(i => {
-
-                function handleQuantity(){
+            function handleQuantity(){
+                for(let x = 0; x <= cartProducts.length; x++){
                     if(event.target.value === "-"){
-                        if(quantity == 0) {
+                        if(quantity[x] == 0) {
                             return
                         } else {
-                            setQuantity(quantity => quantity - 1);
+                            let updatedQuantity = [...quantity]
+                            updatedQuantity = updatedQuantity[x] - 1
+                            setQuantity(updatedQuantity);
                         }
                     } 
                     else {
-                        setQuantity(quantity => quantity + 1);
+                        let updatedQuantity = [...quantity]
+                        // console.log(updatedQuantity)
+                        updatedQuantity = updatedQuantity[x] + 1
+                        // console.log(updatedQuantity)
+                        setQuantity(updatedQuantity);
                     }
                 }
+                // console.log("quantity: " + quantity)
+            }
+
+            console.log("i: " + i)
+
+            function showQuantity(id) {
+                return quantity[id]
+            }
 
                 cartList.push(
                     <div className="product-cart" key={items[i - 1].id}>
-                        <div onClick={() => navigate(`/product/${items[i].id}`)} key={items[i - 1].id} className="cart-item">
+                        <div onClick={() => navigate(`/product/${items[i - 1].id}`)} key={items[i - 1].id} className="cart-item">
                             <img src={items[i - 1].photo} alt="imagem do produto" className="product-cart-image"/> 
                             <div>
                                 <h4 className="product-name">{items[i - 1].name}</h4>
@@ -59,9 +74,9 @@ export default function cart() {
                         </div>
                         <div className="cart-options">
                             <div className="cart-quantity">    
-                                <button className="quantity-button" onClick={() => handleQuantity} value={"-"}>-</button>
-                                <p className="number-quantity">{quantity}</p>
-                                <button className="quantity-button" onClick={() => handleQuantity} value={"+"}>+</button>
+                                <button className="quantity-button" onClick={() => handleQuantity()} value={"-"}>-</button>
+                                <p className="number-quantity">{showQuantity(cartProducts.indexOf(i))}</p>
+                                <button className="quantity-button" onClick={() => handleQuantity()} value={"+"}>+</button>
                             </div>
                         </div>
                             <p className="cart-delete-item" onClick={() => addToCart(items[i - 1].id)}>Excluir</p>
@@ -88,6 +103,16 @@ export default function cart() {
     }
 
     sumItems()
+
+    function sumQuantity() {
+        totalItems = cartList.length
+        if(quantity > 1){
+            totalItems = cartList.length + (quantity - 1);
+        }
+        return totalItems 
+    }
+
+    sumQuantity()
 
     return(
         <div className="cart-page">

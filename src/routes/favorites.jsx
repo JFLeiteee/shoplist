@@ -27,32 +27,13 @@ export default function favorites() {
         }
     }
 
-    const addToCart = (id) => {
-        if(cartProducts.includes(id) == false){
-            const updatedCart = [...cartProducts];
-            updatedCart.push(id);
-            setCartProducts(updatedCart)
-        } else {
-            const updatedCart = [...cartProducts];
-            updatedCart.splice(updatedCart.indexOf(id), 1)
-            setCartProducts(updatedCart)
-        }
-    }
-
     function listFavorites() {
        
             favoriteProducts.map(i => {
 
-                let priceConverted = items[i - 1].price.toString();
-                priceConverted = priceConverted.replace(".", ",")
-
                 favoriteList.push(
                     <div className="product-card" key={items[i - 1].id}>
                         <div className="top-buttons">
-                        <div className="cart-button" onClick={() => addToCart(items[i - 1].id)}>
-                                    <img key={items[i - 1].id} src={cartIcon} className="cart-icon"/>
-                                </div>
-
                             <div className="favorite-button" onClick={() => addToFavorites(items[i - 1].id)}>
                                 <img key={items[i - 1].id} src={favoriteProducts.includes(items[i - 1].id) ? heartFilled : heartOutline} className="heart-icon"/>
                             </div>
@@ -66,7 +47,7 @@ export default function favorites() {
                                     { createStars(items[i - 1].feedback) }
                                     <p className="product-feedback">{items[i - 1].feedback}</p> 
                                 </div>
-                                <h3 className="product-price">R$ {priceConverted}</h3>
+                                <h3 className="product-price">R$ {items[i - 1].price}</h3>
                             </div> 
                         </div>
                     </div>

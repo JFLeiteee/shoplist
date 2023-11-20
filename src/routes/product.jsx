@@ -54,15 +54,13 @@ export default function product() {
                             <img key={items[id - 1].id} src={favoriteProducts[items[id - 1].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
                         </div>
                     </div>
-                    <h1 style={{marginTop: "0"}}>{items[id - 1].name}</h1>
+                    <h1 className="h1-name">{items[id - 1].name}</h1>
                     <h2><span className="product-price">R$ {priceConverted}</span></h2>
                     <div className="product-buttons" style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                         <button className="buy-button"><b>Buy</b></button>
                         <button className="product-cart-button" onClick={() => addToCart(items[id - 1].id)}>
-                            <div style={{display: "flex", justifyContent: "center", placeItems:"center", gap:".5rem"}}>
-                                <img src={colorCart} className="cart-icon"/>
-                                <b>Add to cart</b>
-                            </div>
+                            <img src={colorCart} className="cart-icon"/>
+                            <b>Add to cart</b>
                         </button>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ export default function searchbar({onSearch}) {
 
     return(
         <div className="searchbar">
-            <Link to="/" className="searchbar-navigate"><h2 className="sb-home">HOME</h2></Link>
+            <Link to="/" className="searchbar-navigate"><h2 className="sb-home">OmniMart</h2></Link>
             <input 
                 type="text" 
                 placeholder="Search for a product" 
