@@ -1,7 +1,6 @@
 import { createContext, useState } from "react";
 import data from "../data"
 import starFilled from "../assets/star-filled.png"
-import starOutline from "../assets/star-outline.png"
 
 export const VariableContext = createContext();
 
@@ -16,12 +15,8 @@ export const ContextProvider = ({children}) => {
         setSearchResults(searchFilter)
     }
 
-    function createStars(feedback) {
+    function createStars() {
         let starArray = <img src={starFilled} className="stars-feedback"/>
-        // for(let i = 0; i <= 4; i++){
-        //     starArray.push(<img key={i} src={feedback >= i + 1 ? starFilled : starOutline} alt="" className="stars-feedback"/>)
-        // }
-        
         return starArray;
     }
 

@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom"
 import Searchbar from "./components/Searchbar"
-import data from "./data"
-import { useState, createContext, useContext } from "react"
+import { useContext } from "react"
 import { VariableContext } from "./context/variableContext"
 
 function App() {

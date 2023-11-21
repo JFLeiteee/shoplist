@@ -16,25 +16,26 @@ export default function product() {
     priceConverted = priceConverted.replace(".", ",")
 
     const addToFavorites = (id) => {
-        if(favoriteProducts[id - 1] == undefined) {
-            const updatedFavorites = [...favoriteProducts];
-            updatedFavorites[id - 1] = id;
-            setFavoriteProducts(updatedFavorites)
-        } else {
-            const updatedFavorites = [...favoriteProducts];
-            updatedFavorites[id - 1] = undefined;
-            setFavoriteProducts(updatedFavorites)
+        if(favoriteProducts.includes(id) == false){
+            const updatedFavorites = [...favoriteProducts]
+            updatedFavorites.push(id);
+            setFavoriteProducts(updatedFavorites);
+        } 
+        else {
+            const updatedFavorites = [...favoriteProducts]
+            updatedFavorites.splice(updatedFavorites.indexOf(id), 1)
+            setFavoriteProducts(updatedFavorites);
         }
     }
 
     const addToCart = (id) => {
-        if(cartProducts[id - 1] == undefined) {
+        if(cartProducts.includes(id) == false){
             const updatedCart = [...cartProducts];
-            updatedCart[id - 1] = id;
+            updatedCart.push(id);
             setCartProducts(updatedCart)
         } else {
             const updatedCart = [...cartProducts];
-            updatedCart[id - 1] = undefined;
+            updatedCart.splice(updatedCart.indexOf(id), 1)
             setCartProducts(updatedCart)
         }
     }
@@ -51,7 +52,7 @@ export default function product() {
                         <h3 className="product-feedback">{items[id - 1].feedback}</h3>
 
                         <div id="favorite-button-product" onClick={() => addToFavorites(items[id - 1].id)}>
-                            <img key={items[id - 1].id} src={favoriteProducts[items[id - 1].id - 1] ? heartFilled : heartOutline} className="heart-icon"/>
+                            <img key={items[id - 1].id}  src={favoriteProducts.includes(items[id - 1]?.id) ? heartFilled : heartOutline} className="heart-icon"/>
                         </div>
                     </div>
                     <h1 className="h1-name">{items[id - 1].name}</h1>
@@ -65,7 +66,6 @@ export default function product() {
                     </div>
                 </div>
             </div>
-            
         </div>
     )
 }

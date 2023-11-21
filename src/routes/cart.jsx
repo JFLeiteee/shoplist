@@ -1,14 +1,12 @@
-import { Link, useOutletContext, useNavigate, redirect } from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { useState, useContext } from "react"
-import starFilled from "../assets/star-filled.png"
-import starOutline from "../assets/star-outline.png"
 import { VariableContext } from "../context/variableContext"
 
 export default function cart() {
-    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, createStars} = useContext(VariableContext)
+    const {items, cartProducts, setCartProducts, createStars} = useContext(VariableContext)
 
-    const teste = Array.from({ length: 5 }, () => 1)
-    const [quantity, setQuantity] = useState(teste);
+    // const teste = Array.from({ length: 5 }, () => 1)
+    const [quantity, setQuantity] = useState(1);
 
     let cartList = []
     let totalPrice = 0;
@@ -29,42 +27,23 @@ export default function cart() {
         }
     }
 
+    const handleQuantity = (newQuantity) => {
+        if(newQuantity != 0) {
+            setQuantity(newQuantity)
+        } else {
+            return
+        }
+    }
+
     function listCart() {
         cartProducts.map(i => {
-            function handleQuantity(){
-                for(let x = 0; x <= cartProducts.length; x++){
-                    if(event.target.value === "-"){
-                        if(quantity[x] == 0) {
-                            return
-                        } else {
-                            let updatedQuantity = [...quantity]
-                            updatedQuantity = updatedQuantity[x] - 1
-                            setQuantity(updatedQuantity);
-                        }
-                    } 
-                    else {
-                        let updatedQuantity = [...quantity]
-                        // console.log(updatedQuantity)
-                        updatedQuantity = updatedQuantity[x] + 1
-                        // console.log(updatedQuantity)
-                        setQuantity(updatedQuantity);
-                    }
-                }
-                // console.log("quantity: " + quantity)
-            }
-
-            console.log("i: " + i)
-
-            function showQuantity(id) {
-                return quantity[id]
-            }
 
                 cartList.push(
                     <div className="product-cart" key={items[i - 1].id}>
                         <div onClick={() => navigate(`/product/${items[i - 1].id}`)} key={items[i - 1].id} className="cart-item">
                             <img src={items[i - 1].photo} alt="imagem do produto" className="product-cart-image"/> 
                             <div>
-                                <h4 className="product-name">{items[i - 1].name}</h4>
+                                <h4 className="cart-product-name">{items[i - 1].name}</h4>
                                 <div className="review">
                                     { createStars(items[i - 1].feedback) }
                                     <p className="product-feedback">{items[i - 1].feedback}</p> 
@@ -74,9 +53,9 @@ export default function cart() {
                         </div>
                         <div className="cart-options">
                             <div className="cart-quantity">    
-                                <button className="quantity-button" onClick={() => handleQuantity()} value={"-"}>-</button>
-                                <p className="number-quantity">{showQuantity(cartProducts.indexOf(i))}</p>
-                                <button className="quantity-button" onClick={() => handleQuantity()} value={"+"}>+</button>
+                                <button className="quantity-button" onClick={() => handleQuantity(quantity - 1)} value={"-"}>-</button>
+                                <p className="number-quantity">{quantity}</p>
+                                <button className="quantity-button" onClick={() => handleQuantity(quantity + 1)} value={"+"}>+</button>
                             </div>
                         </div>
                             <p className="cart-delete-item" onClick={() => addToCart(items[i - 1].id)}>Excluir</p>

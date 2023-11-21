@@ -1,15 +1,10 @@
 import { useNavigate } from "react-router-dom"
-import { useState, useContext   } from "react";
-import heartOutline from "../assets/heart-outline.png"
-import heartFilled from "../assets/heart-filled.png"
-import cartIcon from "../assets/cart-icon.png"
-import doneIcon from "../assets/done-icon.png"
-import banner from "../../public/img/banner.png"
+import { useContext   } from "react";
 import { VariableContext } from "../context/variableContext"
 
 export default function home() {
 
-    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults, createStars} = useContext(VariableContext)
+    const {items, searchResults, createStars} = useContext(VariableContext)
 
     const navigate = useNavigate();
 
@@ -17,7 +12,7 @@ export default function home() {
     
     return(
         <> 
-            <img src={banner} className="banner"/>
+            <div className="banner"></div>
             <div className="home-products">
                 { 
                     searchResults != ""

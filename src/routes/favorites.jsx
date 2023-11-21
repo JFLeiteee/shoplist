@@ -1,14 +1,11 @@
-import { Link, useOutletContext, useNavigate, redirect } from "react-router-dom"
-import starFilled from "../assets/star-filled.png"
-import starOutline from "../assets/star-outline.png"
+import { useNavigate } from "react-router-dom"
 import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
-import cartIcon from "../assets/cart-icon.png"
 import { useContext } from "react"
 import { VariableContext } from "../context/variableContext"
 
 export default function favorites() {
-    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, createStars} = useContext(VariableContext)
+    const {items, favoriteProducts, setFavoriteProducts, createStars} = useContext(VariableContext)
 
     let favoriteList = []
 
@@ -28,14 +25,14 @@ export default function favorites() {
     }
 
     function listFavorites() {
-       
+            console.log("fp: " + favoriteProducts)
             favoriteProducts.map(i => {
-
+                console.log("i:" + i)
                 favoriteList.push(
                     <div className="product-card" key={items[i - 1].id}>
                         <div className="top-buttons">
                             <div className="favorite-button" onClick={() => addToFavorites(items[i - 1].id)}>
-                                <img key={items[i - 1].id} src={favoriteProducts.includes(items[i - 1].id) ? heartFilled : heartOutline} className="heart-icon"/>
+                                <img key={items[i - 1].id} src={favoriteProducts.includes(items[i - 1]?.id) ? heartFilled : heartOutline} className="heart-icon"/>
                             </div>
                         </div>
 
@@ -54,7 +51,6 @@ export default function favorites() {
                 )
             }
         )
-        console.log(favoriteList)
         return favoriteList
     } 
 
