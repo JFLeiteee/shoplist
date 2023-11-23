@@ -10,7 +10,7 @@ import { VariableContext } from "../context/variableContext"
 export default function product() {
     const { id } = useParams();
 
-    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, createStars} = useContext(VariableContext)
+    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, createStars, numberOfCart, setNumberOfCart} = useContext(VariableContext)
     
     let priceConverted = items[id - 1].price.toString()
     priceConverted = priceConverted.replace(".", ",")
@@ -32,10 +32,12 @@ export default function product() {
         if(cartProducts.includes(id) == false){
             const updatedCart = [...cartProducts];
             updatedCart.push(id);
+            setNumberOfCart(prevNumber => prevNumber + 1)
             setCartProducts(updatedCart)
         } else {
             const updatedCart = [...cartProducts];
             updatedCart.splice(updatedCart.indexOf(id), 1)
+            setNumberOfCart(prevNumber => prevNumber - 1)
             setCartProducts(updatedCart)
         }
     }

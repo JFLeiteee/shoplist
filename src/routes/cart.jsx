@@ -3,10 +3,7 @@ import { useState, useContext } from "react"
 import { VariableContext } from "../context/variableContext"
 
 export default function cart() {
-    const {items, cartProducts, setCartProducts, createStars} = useContext(VariableContext)
-
-    // const teste = Array.from({ length: 5 }, () => 1)
-    const [quantity, setQuantity] = useState(1);
+    const {items, cartProducts, setCartProducts, createStars, quantities, setQuantities, setNumberOfCart} = useContext(VariableContext)
 
     let cartList = []
     let totalPrice = 0;
@@ -14,6 +11,20 @@ export default function cart() {
     let totalItems = 0;
 
     const navigate = useNavigate();
+
+    function givingValue() {
+        for(let i = 0; i <= cartProducts.length; i++) {
+            if(quantities[i] == undefined || quantities[i] == "") {
+                const updatedQuantity = [...quantities]
+                updatedQuantity[i] = 1
+                setQuantities(updatedQuantity)
+            } else {
+                return
+            }
+        }
+    }
+
+    givingValue()
 
     const addToCart = (id) => {
         if(cartProducts.includes(id) == false){
@@ -23,21 +34,33 @@ export default function cart() {
         } else {
             const updatedCart = [...cartProducts];
             updatedCart.splice(updatedCart.indexOf(id), 1)
+            setNumberOfCart(prevNumber => prevNumber - 1)
             setCartProducts(updatedCart)
         }
     }
 
-    const handleQuantity = (newQuantity) => {
-        if(newQuantity != 0) {
-            setQuantity(newQuantity)
+    const handleQuantity = (id) => {
+        console.log("id :" + id)
+        if(quantities[id - 1] != 0) {
+            if(event.target.value === "-"){
+                const updatedQuantity = [...quantities]
+                updatedQuantity[id - 1] = updatedQuantity[id - 1] - 1
+                setQuantities(updatedQuantity)
+            } else {
+                const updatedQuantity = [...quantities]
+                updatedQuantity[id - 1] = updatedQuantity[id - 1] + 1
+                setQuantities(updatedQuantity)
+            }
         } else {
             return
         }
     }
 
+    console.log("quantity: " + quantities[0])
+    console.log("cart:" + cartProducts)
+
     function listCart() {
         cartProducts.map(i => {
-
                 cartList.push(
                     <div className="product-cart" key={items[i - 1].id}>
                         <div onClick={() => navigate(`/product/${items[i - 1].id}`)} key={items[i - 1].id} className="cart-item">
@@ -53,9 +76,22 @@ export default function cart() {
                         </div>
                         <div className="cart-options">
                             <div className="cart-quantity">    
-                                <button className="quantity-button" onClick={() => handleQuantity(quantity - 1)} value={"-"}>-</button>
-                                <p className="number-quantity">{quantity}</p>
-                                <button className="quantity-button" onClick={() => handleQuantity(quantity + 1)} value={"+"}>+</button>
+                                <button 
+                                    className="quantity-button" 
+                                    onClick={() => handleQuantity(quantities[cartProducts.indexOf(items[i - 1].id)])} 
+                                    value={"-"}>
+                                    -
+                                </button>
+                                <p
+                                    className="number-quantity">
+                                    {quantities[cartProducts.indexOf(items[i - 1].id)]}
+                                </p>
+                                <button 
+                                    className="quantity-button" 
+                                    onClick={() => handleQuantity(quantities[cartProducts.indexOf(items[i - 1].id)])}
+                                    value={"+"}>
+                                    +
+                                </button>
                             </div>
                         </div>
                             <p className="cart-delete-item" onClick={() => addToCart(items[i - 1].id)}>Excluir</p>
@@ -85,8 +121,10 @@ export default function cart() {
 
     function sumQuantity() {
         totalItems = cartList.length
-        if(quantity > 1){
-            totalItems = cartList.length + (quantity - 1);
+        for(let i = 0; i <= quantities.length; i++) {
+            if(quantities[i] > 1){
+                totalItems = cartList.length + (quantities[i] - 1);
+            }
         }
         return totalItems 
     }

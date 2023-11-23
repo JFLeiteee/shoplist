@@ -9,6 +9,8 @@ export const ContextProvider = ({children}) => {
     const [favoriteProducts, setFavoriteProducts] = useState([]) 
     const [cartProducts, setCartProducts] = useState([])
     const [searchResults, setSearchResults] = useState([]) 
+    const [quantities, setQuantities] = useState([]);
+    const [numberOfCart, setNumberOfCart] = useState(0)
 
     function handleSearch(search) {
         const searchFilter = items.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
@@ -21,7 +23,21 @@ export const ContextProvider = ({children}) => {
     }
 
     return (
-        <VariableContext.Provider value={{items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, searchResults, handleSearch, createStars}}>
+        <VariableContext.Provider 
+            value={{
+                items, 
+                favoriteProducts, 
+                setFavoriteProducts, 
+                cartProducts, 
+                setCartProducts, 
+                searchResults, 
+                handleSearch, 
+                createStars, 
+                quantities, 
+                setQuantities,
+                numberOfCart,
+                setNumberOfCart
+            }}>
             {children}
         </VariableContext.Provider>
     )

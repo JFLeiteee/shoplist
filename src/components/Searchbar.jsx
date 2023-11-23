@@ -10,7 +10,7 @@ export default function searchbar({onSearch}) {
         onSearch(search)
     }   
 
-    const {cartProducts, setCartProducts , items} = useContext(VariableContext);
+    const {cartProducts, setCartProducts , items, numberOfCart} = useContext(VariableContext);
 
     // let cartTotal = cartProducts.length;
 
@@ -24,13 +24,15 @@ export default function searchbar({onSearch}) {
                 onChange={handleChange}
             />
             <Link to="favorites" className="searchbar-navigate">Favorites</Link>
-            <Link to="cart" className="searchbar-navigate">
-                {/* {
-                    cartProducts >= 1
-                    ? <p>{cartTotal}</p>
-                    : <div></div>
-                } */}
+            <Link to="cart" className="searchbar-navigate" style={{position: "relative"}}>
                 Cart
+                    {
+                        numberOfCart > 0
+                        ? <div className="number-cart">
+                            <p>{numberOfCart}</p>
+                        </div>
+                        : null
+                    }
             </Link>
         </div>
     )
