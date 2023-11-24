@@ -68,7 +68,9 @@ body {
   outline: none;
   border: none;
   border-radius: 5px;
-  background-color: #eeeeee;
+  background: url(../public/img/search-icon.png) no-repeat center #eeeeee;
+  background-size: 5%;
+  background-position: 97%;
 }
 
 .outlet {

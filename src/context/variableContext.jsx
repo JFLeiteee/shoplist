@@ -11,11 +11,16 @@ export const ContextProvider = ({children}) => {
     const [searchResults, setSearchResults] = useState([]) 
     const [quantities, setQuantities] = useState([]);
     const [numberOfCart, setNumberOfCart] = useState(0)
+    const [search, setSearch] = useState()
 
-    function handleSearch(search) {
-        const searchFilter = items.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
-        setSearchResults(searchFilter)
-    }
+
+    const searchFilter = items.filter((item) =>  {
+        if(search === "") {
+            return item
+        } else {
+            return item.name.toLowerCase().includes(search)
+        }
+    })
 
     function createStars() {
         let starArray = <img src={starFilled} className="stars-feedback"/>
@@ -30,13 +35,15 @@ export const ContextProvider = ({children}) => {
                 setFavoriteProducts, 
                 cartProducts, 
                 setCartProducts, 
-                searchResults, 
-                handleSearch, 
+                searchResults,
+                searchFilter, 
                 createStars, 
                 quantities, 
                 setQuantities,
                 numberOfCart,
-                setNumberOfCart
+                setNumberOfCart,
+                search,
+                setSearch,
             }}>
             {children}
         </VariableContext.Provider>
