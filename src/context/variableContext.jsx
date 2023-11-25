@@ -15,7 +15,7 @@ export const ContextProvider = ({children}) => {
 
     const searchFilter = items.filter((item) =>  {
         if(search === "") {
-            return item
+            return 
         } else {
             return item.name.toLowerCase().includes(search)
         }

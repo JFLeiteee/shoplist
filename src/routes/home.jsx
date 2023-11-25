@@ -12,7 +12,7 @@ export default function home() {
     
     return(
         <> 
-            <div className="banner"></div>
+            { searchFilter == "" ? <div className="banner"></div> : null}
             <div className="home-products">
                 { 
                     searchFilter == ""
