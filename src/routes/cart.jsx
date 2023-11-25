@@ -1,30 +1,17 @@
 import { useNavigate} from "react-router-dom"
-import { useState, useContext } from "react"
+import { useContext } from "react"
 import { VariableContext } from "../context/variableContext"
 
 export default function cart() {
-    const {items, cartProducts, setCartProducts, createStars, quantities, setQuantities, setNumberOfCart} = useContext(VariableContext)
+    const {items, cartProducts, setCartProducts, createStars, setNumberOfCart, quantity, setQuantity} = useContext(VariableContext)
 
     let cartList = []
     let totalPrice = 0;
     let priceConverted = ""
     let totalItems = 0;
+    let numberItems = 0;
 
     const navigate = useNavigate();
-
-    function givingValue() {
-        for(let i = 0; i <= cartProducts.length; i++) {
-            if(quantities[i] == undefined || quantities[i] == "") {
-                const updatedQuantity = [...quantities]
-                updatedQuantity[i] = 1
-                setQuantities(updatedQuantity)
-            } else {
-                return
-            }
-        }
-    }
-
-    givingValue()
 
     const addToCart = (id) => {
         if(cartProducts.includes(id) == false){
@@ -39,25 +26,21 @@ export default function cart() {
         }
     }
 
-    const handleQuantity = (id) => {
-        console.log("id :" + id)
-        if(quantities[id - 1] != 0) {
-            if(event.target.value === "-"){
-                const updatedQuantity = [...quantities]
-                updatedQuantity[id - 1] = updatedQuantity[id - 1] - 1
-                setQuantities(updatedQuantity)
-            } else {
-                const updatedQuantity = [...quantities]
-                updatedQuantity[id - 1] = updatedQuantity[id - 1] + 1
-                setQuantities(updatedQuantity)
-            }
-        } else {
+    function handleQuantity(index) {
+        if(quantity[index] !== 0) {
+            let updatedQuantity = [...quantity];
+            updatedQuantity[index] = event.target.value == "-" ? updatedQuantity[index] - 1 : updatedQuantity[index] + 1 
+            setQuantity(updatedQuantity)
+        } 
+        else if (quantity[index] == 0 && event.target.value == "+") {
+            let updatedQuantity = [...quantity];
+            updatedQuantity[index] = updatedQuantity[index] + 1
+            setQuantity(updatedQuantity)
+        }
+        else {
             return
         }
     }
-
-    console.log("quantity: " + quantities[0])
-    console.log("cart:" + cartProducts)
 
     function listCart() {
         cartProducts.map(i => {
@@ -78,17 +61,17 @@ export default function cart() {
                             <div className="cart-quantity">    
                                 <button 
                                     className="quantity-button" 
-                                    onClick={() => handleQuantity(quantities[cartProducts.indexOf(items[i - 1].id)])} 
+                                    onClick={() => handleQuantity(i - 1)} 
                                     value={"-"}>
                                     -
                                 </button>
                                 <p
                                     className="number-quantity">
-                                    {quantities[cartProducts.indexOf(items[i - 1].id)]}
+                                    {quantity[i - 1]}
                                 </p>
                                 <button 
                                     className="quantity-button" 
-                                    onClick={() => handleQuantity(quantities[cartProducts.indexOf(items[i - 1].id)])}
+                                    onClick={() => handleQuantity(i - 1)}
                                     value={"+"}>
                                     +
                                 </button>
@@ -107,7 +90,7 @@ export default function cart() {
     function sumItems() {
         for(let i = 0; i < items.length; i++) {
             if(cartProducts.includes(items[i].id)){  
-                let itemsPrice = items[i].price
+                let itemsPrice = items[i].price * quantity[i]
                 totalPrice = Number.parseFloat(totalPrice) + Number.parseFloat(itemsPrice)
                 totalPrice = totalPrice.toFixed(2)
             }
@@ -120,13 +103,12 @@ export default function cart() {
     sumItems()
 
     function sumQuantity() {
-        totalItems = cartList.length
-        for(let i = 0; i <= quantities.length; i++) {
-            if(quantities[i] > 1){
-                totalItems = cartList.length + (quantities[i] - 1);
+        for(let i = 0; i < items.length; i++) {
+            if(cartProducts.includes(items[i].id)) {
+                totalItems = totalItems + quantity[i]
             }
         }
-        return totalItems 
+        return totalItems
     }
 
     sumQuantity()
