@@ -25,9 +25,7 @@ export default function favorites() {
     }
 
     function listFavorites() {
-            console.log("fp: " + favoriteProducts)
             favoriteProducts.map(i => {
-                console.log("i:" + i)
                 favoriteList.push(
                     <div className="product-card" key={items[i - 1].id}>
                         <div className="top-buttons">
@@ -60,7 +58,8 @@ export default function favorites() {
         <div className="favorite-page">
             {   
                 favoriteList.length >= 1
-                ?   <>
+                ?   
+                <>
                     <h1>my favorites</h1>
                     <div className="home-products">
                         { favoriteList }

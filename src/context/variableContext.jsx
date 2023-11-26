@@ -41,6 +41,8 @@ export const ContextProvider = ({children}) => {
                 setNumberOfCart,
                 search,
                 setSearch,
+                quantity,
+                setQuantity
             }}>
             {children}
         </VariableContext.Provider>

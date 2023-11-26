@@ -169,7 +169,7 @@ body {
   margin-bottom: .5rem;
 }
 
-.home-products {
+.home-products, .filter-page {
   display: grid;
   grid-template-columns: 20rem 20rem 20rem;
   grid-template-rows: auto;
@@ -218,22 +218,31 @@ body {
   align-items: center;
 }
 
-.filter {
+.filter-container {
   display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin-top: 1.5rem;
+  cursor: pointer;
 }
 
-.filter > button {
-  border: 1px solid #868686;
-  border-radius: 10rem;
-  padding: .3rem;
-  cursor: pointer; 
-  color: #868686;
+.filter-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.filter > button:hover {
-  opacity: .8;
+.filter-image {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: #1068cc;
 }
+
+/* .filter-page {
+  height: 100svh;
+} */
 
 .top-buttons {
   position: absolute;

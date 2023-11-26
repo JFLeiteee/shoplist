@@ -1,7 +1,6 @@
 export default function footer() {
 
     function backToTop() {
-        console.log("deveria ter ido")
         window.scrollTo({
             top: 0,
             behavior: "smooth"

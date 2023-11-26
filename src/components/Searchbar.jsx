@@ -8,7 +8,6 @@ export default function searchbar() {
     
     function handleChange(event) {
         setSearch(event.target.value)
-        console.log(search)
     }   
 
     return(

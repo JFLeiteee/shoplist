@@ -9,6 +9,7 @@ import ErrorPage from './routes/errorPage.jsx'
 import Cart from './routes/cart.jsx'
 import Favorites from './routes/favorites.jsx'
 import Product from './routes/product.jsx'
+import Filter from './routes/filter.jsx'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "product/:id",
         element: <Product />
+      },
+      {
+        path: "filter/:category",
+        element: <Filter />
       }
     ]
   }

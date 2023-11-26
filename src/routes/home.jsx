@@ -1,18 +1,43 @@
 import { useNavigate } from "react-router-dom"
-import { useContext   } from "react";
+import { useContext, useEffect, useState   } from "react";
 import { VariableContext } from "../context/variableContext"
 
 export default function home() {
 
     const {items, createStars, searchFilter} = useContext(VariableContext)
 
+    const [uniqueCategory, setUniqueCategory] = useState(new Set())
+    const [uniqueArray, setUniqueCategoryArray] = useState([])
+
     const navigate = useNavigate();
 
     let priceConverted = ""
+
+    useEffect(() => {
+        items.forEach((item) => {
+            item.category.forEach((category) => {
+                uniqueCategory.add(category)
+            })
+        })
+        const uniqueCategoriesArray = [...uniqueCategory];
+        setUniqueCategoryArray(uniqueCategoriesArray)
+    }, [items])
     
     return(
         <> 
             { searchFilter == "" ? <div className="banner"></div> : null}
+            <div className="filter-container">
+                {
+                    uniqueArray.map((item) => (
+                        <>
+                            <div className="filter-element" onClick={() => navigate(`filter/${item}`)} key={item}>
+                                <img className="filter-image" src="" alt="" />
+                                <p>{item}</p>
+                            </div>
+                        </>
+                    ))
+                }
+            </div>
             <div className="home-products">
                 { 
                     searchFilter == ""
@@ -38,7 +63,6 @@ export default function home() {
                     )})
                     
                     : searchFilter.map((x) => {
-                        console.log(x)
                         return (
                             <div className="product-card" key={x.id}>
                                 <div onClick={() => navigate(`product/${x.id}`)} key={x.id} className="product">

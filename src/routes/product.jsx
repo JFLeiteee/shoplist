@@ -1,6 +1,4 @@
 import { useParams} from "react-router-dom"
-import starFilled from "../assets/star-filled.png"
-import starOutline from "../assets/star-outline.png"
 import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
 import colorCart from "../assets/color-cart.png"
