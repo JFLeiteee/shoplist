@@ -68,7 +68,7 @@ body {
   outline: none;
   border: none;
   border-radius: 5px;
-  background: url(../public/img/search-icon.png) no-repeat center #eeeeee;
+  background: url(../public/img/search-icon.png) no-repeat center #dbdbdb;
   background-size: 5%;
   background-position: 97%;
 }
@@ -169,7 +169,7 @@ body {
   margin-bottom: .5rem;
 }
 
-.home-products, .filter-page {
+.home-products, .filter-page, .search-page {
   display: grid;
   grid-template-columns: 20rem 20rem 20rem;
   grid-template-rows: auto;
@@ -240,9 +240,9 @@ body {
   background-color: #1068cc;
 }
 
-/* .filter-page {
-  height: 100svh;
-} */
+.search-page {
+  min-height: 30rem;
+}
 
 .top-buttons {
   position: absolute;

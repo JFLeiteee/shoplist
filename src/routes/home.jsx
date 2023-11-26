@@ -25,7 +25,7 @@ export default function home() {
     
     return(
         <> 
-            { searchFilter == "" ? <div className="banner"></div> : null}
+            <div className="banner"></div>
             <div className="filter-container">
                 {
                     uniqueArray.map((item) => (
@@ -40,8 +40,7 @@ export default function home() {
             </div>
             <div className="home-products">
                 { 
-                    searchFilter == ""
-                    ? items.map(x => {
+                    items.map(x => {
 
                         priceConverted = x.price.toString();
                         priceConverted = priceConverted.replace(".", ",")
@@ -61,24 +60,6 @@ export default function home() {
                             </div>
                         </div>
                     )})
-                    
-                    : searchFilter.map((x) => {
-                        return (
-                            <div className="product-card" key={x.id}>
-                                <div onClick={() => navigate(`product/${x.id}`)} key={x.id} className="product">
-                                    <img src={x.photo} alt="imagem do produto" className="product-image"/>
-                                    <div className="about-product">
-                                        <h4 className="product-name">{x.name}</h4>
-                                        <div className="review">
-                                            { createStars(x.feedback) }
-                                            <p className="product-feedback">{x.feedback}</p> 
-                                        </div>
-                                        <h3 className="product-price">R$ {x.price}</h3>
-                                    </div> 
-                                </div>
-                            </div>
-                        )
-                    })
                 }
             </div>
         </>

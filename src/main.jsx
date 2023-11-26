@@ -10,6 +10,7 @@ import Cart from './routes/cart.jsx'
 import Favorites from './routes/favorites.jsx'
 import Product from './routes/product.jsx'
 import Filter from './routes/filter.jsx'
+import Search from './routes/search.jsx'
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "filter/:category",
         element: <Filter />
+      },
+      {
+        path: "search/:search",
+        element: <Search />
       }
     ]
   }
