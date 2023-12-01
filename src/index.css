@@ -13,27 +13,39 @@
   box-sizing: border-box;
 }
 
+html { 
+  max-width: 100vw;
+  /* min-width: 62rem; */
+  min-width: 65.1rem;
+  background-color: red;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
 }
 
 .content {
-  padding: 5rem 0 0 25rem ;
+  padding: 5rem 0 0 0rem;
 }
 
 .banner {
+  max-width: 100%;
   width: 100%;
+  min-width: 75%;
   height: 25.6rem;
-  background: url(../public/img/banner.png) no-repeat;
+  background: url(../public/img/banner.png) no-repeat center;
 }
 
 /* SEARCHBAR */
 .searchbar {
   position: sticky;
   top: 0;
-  padding: .5rem 0 .5rem 9.5rem;
-  width: 100%;
+  padding: .5rem 10% .5rem 5%;
+  justify-content: center;
+  max-width: 100vw;
+  min-width: 65rem;
   height: 6.5rem;
   display: flex;
   align-items: center;
@@ -79,11 +91,13 @@ body {
   align-items: center;
   padding: 0rem 0rem 0rem 0rem;
   flex-direction: column;
+  width: 100%;
 }
 
 .main-container {
   background-color: #fff;
   min-height: 100vh;
+  position: relative;
 }
 
 .sb-home {
@@ -195,7 +209,6 @@ body {
 
 .product-image {
   align-self: center;
-  /* width: 9rem; */
   width: 100%;
   max-width: 12rem;
   max-height: 90%;
@@ -225,6 +238,7 @@ body {
   max-width: 100%;
   margin-top: 1.5rem;
   cursor: pointer;
+  padding-inline: 4%;
 }
 
 .filter-element {

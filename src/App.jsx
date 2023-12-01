@@ -6,11 +6,11 @@ function App() {
 
   return (
     <div className="main-container">
-        <Searchbar/>
-        <div className="outlet">
-          <Outlet />
-        </div>
-        <Footer />
+      <Searchbar/>
+      <div className="outlet">
+        <Outlet />
+      </div>
+      <Footer />
     </div>
   )
 }

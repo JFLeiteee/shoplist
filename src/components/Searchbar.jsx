@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function searchbar() {
 
-    const {numberOfCart, search, setSearch} = useContext(VariableContext);
+    const {numberOfCart, search, setSearch } = useContext(VariableContext);
     
     function handleChange(event) {
         setSearch(event.target.value)

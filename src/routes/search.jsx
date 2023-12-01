@@ -19,6 +19,8 @@ export default function searchPage() {
         setOtherSearch(search)
     }, [search])
     
+    console.log("aqui: " + isLoading)
+
     return (
         <div className="search-page">
             { 
