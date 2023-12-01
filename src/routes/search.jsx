@@ -18,8 +18,6 @@ export default function searchPage() {
         setApplySearch(searchFilter)
         setOtherSearch(search)
     }, [search])
-    
-    console.log("aqui: " + isLoading)
 
     return (
         <div className="search-page">

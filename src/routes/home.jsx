@@ -4,7 +4,7 @@ import { VariableContext } from "../context/variableContext"
 
 export default function home() {
 
-    const {items, createStars, searchFilter} = useContext(VariableContext)
+    const {items, createStars } = useContext(VariableContext)
 
     const [uniqueCategory, setUniqueCategory] = useState(new Set())
     const [uniqueArray, setUniqueCategoryArray] = useState([])
@@ -32,7 +32,7 @@ export default function home() {
                         <>
                             <div className="filter-element" onClick={() => navigate(`filter/${item}`)} key={item}>
                                 <img className="filter-image" src="" alt="" />
-                                <p>{item}</p>
+                                <p className="filter-name">{item}</p>
                             </div>
                         </>
                     ))
