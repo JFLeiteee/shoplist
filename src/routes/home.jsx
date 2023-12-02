@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useContext, useEffect, useState   } from "react";
 import { VariableContext } from "../context/variableContext"
+import banner from "../../public/img/banner.png"
 
 export default function home() {
 
@@ -25,7 +26,8 @@ export default function home() {
     
     return(
         <> 
-            <div className="banner"></div>
+            {/* <div className="banner"></div> */}
+            <img src={banner} alt="banner" className="banner" />
             <div className="filter-container">
                 {
                     uniqueArray.map((item) => (

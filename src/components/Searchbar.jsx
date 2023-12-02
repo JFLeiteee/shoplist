@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { VariableContext } from "../context/variableContext"
 import { useNavigate } from "react-router-dom";
+import colorHeart from "../assets/color-heart.png"
+import colorCart from "../assets/color-cart.png" 
 
 export default function searchbar() {
 
@@ -28,12 +30,14 @@ export default function searchbar() {
                     type="text" 
                     placeholder="Search for a product" 
                     className="searchbar-search" 
-                    onChange={handleChange}
+                    onChange={handleChange} 
                 />
             </form>
-            <Link to="favorites" className="searchbar-navigate">S2</Link>
+            <Link to="favorites" className="searchbar-navigate">
+                <img src={colorHeart} className="searchbar-icon"/>
+            </Link>
             <Link to="cart" className="searchbar-navigate" style={{position: "relative"}}>
-                C
+                <img src={colorCart} alt="" className="searchbar-icon"/>
                     {
                         numberOfCart > 0
                         ? <div className="number-cart">

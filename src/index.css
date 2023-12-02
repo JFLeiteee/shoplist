@@ -14,10 +14,9 @@
 }
 
 html { 
-  max-width: 100vw;
-  min-width: 65.1rem;
   overflow-x: hidden;
   box-sizing: border-box;
+  width: max(100vw, 100%)
 }
 
 body {
@@ -30,10 +29,8 @@ body {
 }
 
 .banner {
-  background: url(../public/img/banner.png) no-repeat center;
-  background-size: cover;
   width: min(100%, 100vw);
-  height: 25rem;
+  height: auto;
 }
 
 /* SEARCHBAR */
@@ -46,7 +43,7 @@ body {
   height: 6.5rem;
   display: flex;
   align-items: center;
-  gap: max(4vw + 1rem, .5rem);
+  gap: max(10vw + 1rem, .5rem);
   text-decoration: none;
   color: #000;
   background-color: #fff;
@@ -82,6 +79,11 @@ body {
   background-position: 97%;
 }
 
+.searchbar-icon {
+  width: 1.5rem;
+  height: auto;
+}
+
 .outlet {
   display: flex;
   justify-content: center;
@@ -106,7 +108,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: min(20rem, 14rem);
+  width: min(20rem, 12rem);
   height: min(25rem, 18rem);
   border: 1px solid transparent;
   padding: min(1rem, .5rem);
@@ -186,6 +188,7 @@ body {
   gap: 1rem;
   place-items: center;
   padding-top: 1.5rem;
+
 }
 
 .superior, .inferior {
@@ -234,6 +237,7 @@ body {
   margin-top: 1.5rem;
   padding-inline: 4%;
   cursor: pointer;
+  justify-content: center
 }
 
 .filter-element {
@@ -243,15 +247,15 @@ body {
 }
 
 .filter-image {
-  min-width: 5rem;
-  min-height: 5rem;
-  max-height: 5.5rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  max-height: 3.5rem;
   border-radius: 50%;
   background-color: #1068cc;
 }
 
 .filter-name {
-  font-size: 2vmin;
+  font-size: min(2.5vmin, 1.2rem);
 }
 
 .search-page {
@@ -543,13 +547,9 @@ body {
 
   .home-products {
     display: grid;
-    grid-template-columns: 15rem 15rem;
+    grid-template-columns: 10rem 10rem;
     grid-template-rows: auto;
     gap: 1rem;
     place-items: center;
-  }
-
-  .product-card {
-
   }
 }
