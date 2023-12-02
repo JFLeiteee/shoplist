@@ -1,14 +1,18 @@
-import { useParams} from "react-router-dom"
+import { useParams, useNavigate} from "react-router-dom"
 import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
 import colorCart from "../assets/color-cart.png"
 import { useContext } from "react"
 import { VariableContext } from "../context/variableContext"
+import Arrow from "../components/Arrow.jsx"
+
 
 export default function product() {
     const { id } = useParams();
 
-    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, createStars, numberOfCart, setNumberOfCart} = useContext(VariableContext)
+    const navigate = useNavigate();
+
+    const {items, favoriteProducts, setFavoriteProducts, cartProducts, setCartProducts, createStars, setNumberOfCart} = useContext(VariableContext)
     
     let priceConverted = items[id - 1].price.toString()
     priceConverted = priceConverted.replace(".", ",")
@@ -42,6 +46,7 @@ export default function product() {
 
     return(
         <div className="product-page">
+            <Arrow />
             <div className="superior">
                 <div className="product-image-container">
                     <img src={items[id - 1].photo} alt="product image" className="product-showoff"/>

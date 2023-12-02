@@ -1,6 +1,7 @@
 import { useNavigate} from "react-router-dom"
 import { useContext } from "react"
 import { VariableContext } from "../context/variableContext"
+import Arrow from "../components/Arrow.jsx"
 
 export default function cart() {
     const {items, cartProducts, setCartProducts, createStars, setNumberOfCart, quantity, setQuantity} = useContext(VariableContext)
@@ -48,7 +49,7 @@ export default function cart() {
                     <div className="product-cart" key={items[i - 1].id}>
                         <div onClick={() => navigate(`/product/${items[i - 1].id}`)} key={items[i - 1].id} className="cart-item">
                             <img src={items[i - 1].photo} alt="imagem do produto" className="product-cart-image"/> 
-                            <div>
+                            <div className="cart-left-side">
                                 <h4 className="cart-product-name">{items[i - 1].name}</h4>
                                 <div className="review">
                                     { createStars(items[i - 1].feedback) }
@@ -115,6 +116,7 @@ export default function cart() {
 
     return(
         <div className="cart-page">
+            <Arrow />
             { 
                 cartList.length >= 1 
                 ? 
