@@ -7,7 +7,7 @@ export default function arrow() {
 
     return(
         <>
-            { window.innerWidth <= 414 
+            { window.innerWidth <= 500
                 ? 
                 <div style={{display: "flex", gap: "1rem", alignItems: "center", paddingInline: "1rem", alignSelf:"flex-start"}}>
                     <img src={arrowIcon} alt="arrow" className="arrow-icon" onClick={() => navigate(-1)}/>

@@ -3,6 +3,7 @@ import heartOutline from "../assets/heart-outline.png"
 import heartFilled from "../assets/heart-filled.png"
 import { useContext } from "react"
 import { VariableContext } from "../context/variableContext"
+import Arrow from "../components/Arrow.jsx"
 
 export default function favorites() {
     const {items, favoriteProducts, setFavoriteProducts, createStars} = useContext(VariableContext)
@@ -56,6 +57,7 @@ export default function favorites() {
 
     return(
         <div className="favorite-page">
+            <Arrow />
             {   
                 favoriteList.length >= 1
                 ?   

@@ -24,7 +24,7 @@ export default function searchbar() {
 
     return(
         <div className="searchbar">
-            { window.innerWidth > 425 ? <Link to="/" className="searchbar-navigate"><h2 className="sb-home">OmniMart</h2></Link> : null }
+            { window.innerWidth > 500 ? <Link to="/" className="searchbar-navigate"><h2 className="sb-home">OmniMart</h2></Link> : null }
             <form onSubmit={() => handleSearch()}>
                 <input 
                     type="text" 
